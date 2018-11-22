@@ -14,6 +14,8 @@ Page({
     },
     nums:[],
   total:0,
+  setIntervalTime:null,
+  time:0,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -26,28 +28,14 @@ Page({
       this.nums=shuffle(nums);
       this.total=this.nums.length;
       this.getNum()
-
-      var plugin = requirePlugin("WechatSI")
-      let manager = plugin.getRecordRecognitionManager()
-      manager.onRecognize = function(res) {
-        console.log("current result", res.result)
-      }
-      manager.onStop = function(res) {
-        console.log("record file path", res.tempFilePath)
-        console.log("result", res.result)
-      }
-      manager.onStart = function(res) {
-        console.log("成功开始录音识别", res)
-      }
-      manager.onError = function(res) {
-        console.error("error msg", res.msg)
-      }
-      manager.start({duration:30000, lang: "zh_CN"})
     },
-    getNum(){
-        let num=this.nums.pop();
+    getNum(success=true){
+        let num=this.nums.shift();
+      if(!success){
+        this.nums.push(this.data.num);
+      }
         this.setData({
-          //num:num,
+          num:num,
           last:this.total-this.nums.length,
           total:this.total,
         })
@@ -69,13 +57,36 @@ Page({
         width:sys.windowHeight,
         height:sys.windowWidth,
       })
+      if(!this.setIntervalTime){
+        this.setIntervalTime=setInterval(()=>{
+          let gameover=false;
+          if(this.nums.length==0){
+            clearInterval(this.setIntervalTime);
+            this.setIntervalTime=null;
+            gameover=true;
+          }else{
+            this.time+=1;
+          }
+          let min=parseInt(this.time/60);
+          let timeStr=(min>0?(min+'分'):'')+(this.time%60)+'秒';
+          this.setData({
+            timeStr:timeStr,
+            gameover:gameover,
+          })
+        },1000)
+      }
+
     },
 
     /**
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-
+      if(this.setIntervalTime){
+        clearInterval(this.setIntervalTime);
+      }
+      this.setIntervalTime=null;
+      this.time=0;
     },
 
     /**
@@ -104,5 +115,11 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+  success(){
+    this.getNum();
+  },
+  fail(){
+    this.getNum(false);
+  },
 })

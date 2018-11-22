@@ -6,7 +6,9 @@
 		"es6": true,
 		"postcss": true,
 		"minified": true,
-		"newFeature": true
+		"newFeature": true,
+		"nodeModules": true,
+		"autoAudits": true
 	},
 	"appid": "wx3fd77437e8ec5d44",
 	"projectname": "suzi",

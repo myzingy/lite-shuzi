@@ -4,10 +4,14 @@ page{
 }
 .num_view{
   transform:rotate(90deg);
-  font-size: 600rpx;
-  font-weight: bold;
+  font-size: 450rpx;
   text-align: center;
   position: relative;
+  white-space:nowrap;
+}
+.num-gameover{
+    font-size: 100rpx;
+    color:red;
 }
 .tips{
   position: absolute;
@@ -15,3 +19,14 @@ page{
   right: 0;
   font-size: 32rpx;
 }
+.tips .time{
+padding-right:40rpx;
+}
+.success,.clear{
+   position: absolute;
+   bottom: 40rpx;
+   right: 20rpx;
+ }
+ .clear{
+ bottom: 240rpx;
+ }
