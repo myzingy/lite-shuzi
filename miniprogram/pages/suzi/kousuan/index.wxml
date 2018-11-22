@@ -1,0 +1,8 @@
+<!--miniprogram/pages/suzi/kousuan/index.wxml-->
+<nav hasHome
+     home="pages/suzi/kousuan/index"
+     backgroundColor="#0099FF"
+     color="#fefefe">KSK</nav>
+<view class="page">
+    <button type="primary">开 始</button>
+</view>
