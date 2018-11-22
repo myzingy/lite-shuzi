@@ -8,17 +8,27 @@ Page({
     data: {
         width:100,
         height:100,
+      num:"",
     },
-
+    nums:[],
     /**
      * 生命周期函数--监听页面加载
      */
-    onLoad: function (options) {
+    onLoad: async function (options) {
       wx.setKeepScreenOn({
         keepScreenOn: true
-      })
+      });
+      let nums=await getApp().cache('nums');
+      const shuffle = items => items.sort(() => Math.random() - 0.5);
+      this.nums=shuffle(nums);
+      this.getNum()
     },
-
+    getNum(){
+        let num=this.nums.pop();
+        this.setData({
+          num:num,
+        })
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
