@@ -1,4 +1,6 @@
 <!--miniprogram/pages/suzi/kousuan/132.wxml-->
-<view class="num_view flex-vc" style="width: {{width}}px;height:{{height}}px;transform-origin:0 0 ;margin-left: {{height}}px;">
-    {{num}}
+<view class="num_view flex-vc"
+      style="width: {{width}}px;height:{{height}}px;transform-origin:0 0 ;margin-left: {{height}}px;">
+    <view class="num">{{num}}</view>
+    <view class="tips">{{last}}/{{total}}</view>
 </view>

@@ -9,8 +9,11 @@ Page({
         width:100,
         height:100,
       num:"",
+      last:0,
+      total:0,
     },
     nums:[],
+  total:0,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -21,12 +24,32 @@ Page({
       let nums=await getApp().cache('nums');
       const shuffle = items => items.sort(() => Math.random() - 0.5);
       this.nums=shuffle(nums);
+      this.total=this.nums.length;
       this.getNum()
+
+      var plugin = requirePlugin("WechatSI")
+      let manager = plugin.getRecordRecognitionManager()
+      manager.onRecognize = function(res) {
+        console.log("current result", res.result)
+      }
+      manager.onStop = function(res) {
+        console.log("record file path", res.tempFilePath)
+        console.log("result", res.result)
+      }
+      manager.onStart = function(res) {
+        console.log("成功开始录音识别", res)
+      }
+      manager.onError = function(res) {
+        console.error("error msg", res.msg)
+      }
+      manager.start({duration:30000, lang: "zh_CN"})
     },
     getNum(){
         let num=this.nums.pop();
         this.setData({
-          num:num,
+          //num:num,
+          last:this.total-this.nums.length,
+          total:this.total,
         })
     },
     /**
