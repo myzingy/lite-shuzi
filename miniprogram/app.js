@@ -1,5 +1,8 @@
 //app.js
+import {vk,regeneratorRuntime} from 'vktool'
 App({
+  ...vk,
+  regeneratorRuntime:regeneratorRuntime,
   onLaunch: function () {
     
     if (!wx.cloud) {
@@ -11,5 +14,8 @@ App({
     }
 
     this.globalData = {}
+  },
+  onHide(){
+    this.cache_clear()
   }
 })

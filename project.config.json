@@ -10,7 +10,7 @@
 	},
 	"appid": "wx3fd77437e8ec5d44",
 	"projectname": "suzi",
-	"libVersion": "2.2.5",
+	"libVersion": "2.4.0",
 	"condition": {
 		"search": {
 			"current": -1,
