@@ -1,4 +1,5 @@
 // miniprogram/pages/suzi/kousuan/index.js
+
 Page({
 
     /**
@@ -7,12 +8,22 @@ Page({
     data: {
 
     },
-
+    nums:[],
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        for(let i=0;i<=10;i++){
+          for(let j=0;j<=10;j++){
+            if(i-j>=0){
+              this.nums.push(i+'-'+j);
+            }
+            if(i+j<=10){
+              this.nums.push(i+'+'+j);
+            }
+          }
+        }
+        console.log(this.nums,this.nums.length)
     },
 
     /**
@@ -62,5 +73,11 @@ Page({
      */
     onShareAppMessage: function () {
 
-    }
+    },
+    start(){
+        getApp().cache('nums',this.nums);
+      wx.navigateTo({
+        url:'./132'
+      });
+    },
 })

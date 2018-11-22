@@ -4,5 +4,5 @@
      backgroundColor="#0099FF"
      color="#fefefe">KSK</nav>
 <view class="page">
-    <button type="primary">开 始</button>
+    <button type="primary" bindtap="start">开 始</button>
 </view>
