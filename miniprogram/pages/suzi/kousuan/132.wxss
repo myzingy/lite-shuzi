@@ -1,0 +1,10 @@
+/* miniprogram/pages/suzi/kousuan/132.wxss */
+page{
+  background: #fefefe;
+}
+.num_view{
+  transform:rotate(90deg);
+  font-size: 600rpx;
+  font-weight: bold;
+  text-align: center;
+}
