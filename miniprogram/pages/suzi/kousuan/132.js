@@ -159,4 +159,7 @@ Page({
       }
     })
   },
+  back(){
+    wx.navigateBack();
+  },
 })
