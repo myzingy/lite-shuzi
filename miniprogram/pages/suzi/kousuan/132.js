@@ -39,7 +39,7 @@ Page({
         this.nums.push(this.data.num);
       }
         this.setData({
-          //num:num,
+          num:num,
           last:this.total-this.nums.length,
           total:this.total,
         })
@@ -119,12 +119,24 @@ Page({
     onShareAppMessage: function () {
 
     },
+  passFlag:false,
+  pass(){
+    if(this.passFlag) return true;
+    console.log(Math.random())
+    this.passFlag=true;
+    setTimeout(()=>{
+      this.passFlag=false;
+    },200)
+    return false;
+  },
   success(){
     if(this.data.gameover) return;
+    if(this.pass()) return;
     this.getNum();
   },
   fail(){
     if(this.data.gameover) return;
+    if(this.pass()) return;
     this.totalFail++;
     this.getNum(false);
   },
