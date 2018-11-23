@@ -35,7 +35,7 @@ Page({
         this.nums.push(this.data.num);
       }
         this.setData({
-          num:num,
+          //num:num,
           last:this.total-this.nums.length,
           total:this.total,
         })

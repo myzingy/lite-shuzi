@@ -1,1 +1,17 @@
 /* miniprogram/pages/suzi/kousuan/index.wxss */
+.checkbox{
+  display: block;
+  margin-bottom: 30rpx;
+  color: #0063ce;
+}
+.checkbox-label{
+  padding-left: 30rpx;
+  font-weight: bold;
+}
+.tips{
+  margin-bottom: 30rpx;
+}
+.tips-ai{
+  font-size: 24rpx;
+  margin-bottom: 100rpx;
+}

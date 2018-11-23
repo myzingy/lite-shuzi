@@ -5,6 +5,10 @@
   align-items: center;
   box-sizing: border-box;
 }
+page{
+  color:#353535;
+  font-size: 32rpx;
+}
 .page{
   width: 90%;
   margin: 0 auto;

@@ -2,7 +2,20 @@
 <nav hasHome
      home="pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
-     color="#fefefe">KSK</nav>
-<view class="page">
+     color="#fefefe">口算卡 132</nav>
+<view class="page" style="margin-top: 20rpx">
+    <view class="tips">
+        10以内加减速算卡，适用小学一年级提升计算基础能力，请坚持每天训练
+    </view>
+    <checkbox-group bindchange="checkboxChange">
+        <label class="checkbox" wx:for="{{items}}">
+            <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
+            <text class="checkbox-label">{{item.label}}</text>
+        </label>
+    </checkbox-group>
+    <view class="tips-ai">
+        开启 “智能辅助判断”，会自动识别语音是否正确，正确将跳到下一题，错误将停留在当前题目；
+        <view style="color: #ff007a;text-decoration : underline;">建议开启，保持环境安静，佩戴耳麦可以提高识别率</view>
+    </view>
     <button type="primary" bindtap="start">开 始</button>
 </view>
