@@ -8,6 +8,7 @@
   border-radius: 10rpx;
   padding: 10rpx;
   box-shadow: 2rpx 2rpx 14rpx 6rpx rgba(231,228,228,.5);
+  margin-bottom: 30rpx;
 }
 .pack .header{
   height: 100rpx;
