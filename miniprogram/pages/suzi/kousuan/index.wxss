@@ -15,3 +15,9 @@
   font-size: 24rpx;
   margin-bottom: 100rpx;
 }
+
+.history{
+  position: fixed;
+  bottom: 10rpx;
+  right: 10rpx;
+}

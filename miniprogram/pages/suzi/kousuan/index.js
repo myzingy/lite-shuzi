@@ -101,4 +101,9 @@ Page({
     this.hasAI=val.indexOf('AI')>-1;
     this.greateNums(fua,fus)
   },
+  history(){
+    wx.navigateTo({
+      url:'./history'
+    });
+  }
 })

@@ -79,3 +79,5 @@
 .icon-jiangbei-7:before { content: "\e6bd"; }
 
 .icon-jiangbei-8:before { content: "\e6be"; }
+
+.icon-jiangbei-9:before { content: &#xe6b9;}

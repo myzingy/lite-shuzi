@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 1,
+			"current": 2,
 			"list": [
 				{
 					"id": -1,
@@ -41,7 +41,13 @@
 				{
 					"id": -1,
 					"name": "pages/suzi/kousuan/132",
-					"pathName": "pages/suzi/kousuan/132"
+					"pathName": "pages/suzi/kousuan/132",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/suzi/kousuan/history",
+					"pathName": "pages/suzi/kousuan/history"
 				}
 			]
 		}

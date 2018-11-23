@@ -151,6 +151,7 @@ Page({
     const db = wx.cloud.database()
     db.collection('shuzi132').add({
       data: {
+        type:'132',
         addtime: parseInt(new Date()/1000),
         total:this.data.total,
         totalFail:this.data.totalFail,

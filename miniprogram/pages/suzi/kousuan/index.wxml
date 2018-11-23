@@ -18,4 +18,8 @@
         <view style="color: #ff007a;text-decoration : underline;">建议开启，保持环境安静，佩戴耳麦可以提高识别率</view>
     </view>
     <button type="primary" bindtap="start">开 始</button>
+    <view class="flex-vc history" bindtap="history">
+        <icon type="waiting" size="40" color="#d9d900" />
+        纪 录
+    </view>
 </view>
