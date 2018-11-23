@@ -70,6 +70,7 @@ Page({
             this.setIntervalTime=null;
             obj.gameover=true;
             obj.totalFail=this.totalFail
+            this.saveScore();
           }else{
             this.time+=1;
           }
@@ -78,6 +79,7 @@ Page({
           this.setData(obj)
         },1000)
       }
+      //this.saveScore();
 
     },
 
@@ -144,5 +146,16 @@ Page({
     this.setData({
       hasPlay:true,
     })
-  }
+  },
+  saveScore(){
+    const db = wx.cloud.database()
+    db.collection('shuzi132').add({
+      data: {
+        addtime: parseInt(new Date()/1000),
+        total:this.data.total,
+        totalFail:this.data.totalFail,
+        time:this.time,
+      }
+    })
+  },
 })

@@ -14,6 +14,12 @@ App({
     }
 
     this.globalData = {}
+    wx.cloud.callFunction({
+      name: 'login',
+      data: {},
+    }).then(res=>{
+      this.globalData.openid = res.result.openid
+    })
   },
   onHide(){
     this.cache_clear()
