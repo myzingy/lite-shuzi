@@ -21,6 +21,23 @@ App({
       this.globalData.openid = res.result.openid
     })
   },
+  onShow:function() {
+    if (wx.canIUse('getUpdateManager')) {
+      const updateManager = wx.getUpdateManager();
+      updateManager.onCheckForUpdate(function (res) {
+        // 请求完新版本信息的回调
+        console.log('onCheckForUpdate', res)
+      })
+      updateManager.onUpdateReady(function (res) {
+        console.log('onUpdateReady', res)
+        updateManager.applyUpdate();
+      })
+      updateManager.onUpdateFailed(function (res) {
+        // 新的版本下载失败
+        console.log('onUpdateFailed', res)
+      })
+    }
+  },
   onHide(){
     this.cache_clear()
   }
