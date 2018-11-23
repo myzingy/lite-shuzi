@@ -153,8 +153,8 @@ Page({
       data: {
         type:'132',
         addtime: parseInt(new Date()/1000),
-        total:this.data.total,
-        totalFail:this.data.totalFail,
+        total:this.total,
+        totalFail:this.totalFail,
         time:this.time,
       }
     })

@@ -47,3 +47,6 @@ padding-right:40rpx;
 .mask-start .start view{
   padding-left: 30rpx;
 }
+.back{
+  transform:rotate(90deg);
+}

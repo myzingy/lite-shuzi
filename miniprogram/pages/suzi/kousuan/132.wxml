@@ -5,6 +5,12 @@
         <view>题数：{{total}}</view>
         <view>用时：{{timeStr}}</view>
         <view style="margin-top: 40rpx;">{{totalFail>0?('出错：'+totalFail+'条'):'非常棒！全部正确'}}</view>
+        <view style="height: 120rpx; line-height: 120rpx;">
+            <icon class="back"
+                  type="download" size="60"
+                  color="green" bindtap="back"/>
+            <text style="color:#399939;padding-left: 50rpx;">返回</text>
+        </view>
     </view>
     <view class="num" wx:else="">
         {{num}}
@@ -22,4 +28,5 @@
             <view>开 始</view>
         </view>
     </view>
+
 </view>
