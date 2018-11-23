@@ -92,7 +92,9 @@ Page({
       }
       this.setIntervalTime=null;
       this.time=0;
-      wx.navigateBack();
+      wx.redirectTo({
+        url:'./index'
+      })
     },
 
     /**
