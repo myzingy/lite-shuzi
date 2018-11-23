@@ -11,11 +11,15 @@ Page({
       num:"",
       last:0,
       total:0,
+      gameover:false,
+      hasPlay:false,
+      totalFail:0,
     },
     nums:[],
   total:0,
   setIntervalTime:null,
   time:0,
+  totalFail:0,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -59,20 +63,19 @@ Page({
       })
       if(!this.setIntervalTime){
         this.setIntervalTime=setInterval(()=>{
-          let gameover=false;
+          if(!this.data.hasPlay) return;
+          let obj={}
           if(this.nums.length==0){
             clearInterval(this.setIntervalTime);
             this.setIntervalTime=null;
-            gameover=true;
+            obj.gameover=true;
+            obj.totalFail=this.totalFail
           }else{
             this.time+=1;
           }
           let min=parseInt(this.time/60);
-          let timeStr=(min>0?(min+'分'):'')+(this.time%60)+'秒';
-          this.setData({
-            timeStr:timeStr,
-            gameover:gameover,
-          })
+          obj.timeStr=(min>0?(min+'分'):'')+(this.time%60)+'秒';
+          this.setData(obj)
         },1000)
       }
 
@@ -117,9 +120,17 @@ Page({
 
     },
   success(){
+    if(this.data.gameover) return;
     this.getNum();
   },
   fail(){
+    if(this.data.gameover) return;
+    this.totalFail++;
     this.getNum(false);
   },
+  start(){
+    this.setData({
+      hasPlay:true,
+    })
+  }
 })
