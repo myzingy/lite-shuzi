@@ -1,0 +1,37 @@
+/* miniprogram/pages/suzi/kousuan/history.wxss */
+.page{
+  margin-top: 50rpx;
+}
+.pack{
+  position: relative;
+  border: 2rpx solid #ececec;
+  border-radius: 10rpx;
+  padding: 10rpx;
+  box-shadow: 2rpx 2rpx 14rpx 6rpx rgba(231,228,228,.5);
+}
+.pack .header{
+  height: 100rpx;
+  line-height: 100rpx;
+  font-size: 40rpx;
+}
+.pack .row{
+  margin-bottom: 10rpx;
+}
+.pack .row .msg{
+  color: #0063ce;
+  padding-left: 10rpx;
+}
+
+.jb7{
+  width: 100rpx;
+  height: 100rpx;
+  position: absolute;
+  top:-30rpx;
+  right: -30rpx;
+  transform: rotate(45deg);
+
+}
+.jb7 image{
+  width: 100%;
+  height: 100%;
+}
