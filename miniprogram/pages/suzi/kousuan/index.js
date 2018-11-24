@@ -84,7 +84,7 @@ Page({
         if(i-j>=0 && fus){
           nums.push(i+'-'+j);
         }
-        if(i+j<=1 && fua){
+        if(i+j<=10 && fua){
           nums.push(i+'+'+j);
         }
       }
