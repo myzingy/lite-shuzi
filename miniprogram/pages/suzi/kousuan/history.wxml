@@ -11,7 +11,7 @@
         <view class="content">
             <view class="row flex-lr">
                 <view class="label">题数<text class="msg">{{item.total}}</text></view>
-                <view class="label">出错<text class="msg">{{item.totalFail}}</text></view>
+                <view class="label">出错<text class="msg">{{item.totalFail}}次</text></view>
                 <view class="label">正确率<text class="msg">{{item.oklv}}</text></view>
             </view>
             <view class="row flex-lr">

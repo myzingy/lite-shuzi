@@ -91,28 +91,27 @@ Page({
     let rows=this.data.rows;
     let app=getApp();
     data.forEach(r=>{
-        r.dateStr=app.date_format(r.addtime," `DAY/MM-DD` 周WW HH:II");
-        let min=parseInt(r.time/60);
-        r.timeStr=(min>0?(min+'分'):'')+(r.time%60)+'秒';
-        r.oklv=(((r.total-r.totalFail)/r.total)*100).toFixed(2)+'%'
-        r.sulv=(r.time/r.total).toFixed(2);
-        r.result='B';
-        if(r.totalFail==0){
-          if(r.sulv<2 ){
-            r.result='A+';
-          }
-            if(r.sulv<1.36){
-              r.result='A++';
-            }
-
-        }else{
-          if(r.total==132 && r.time<420){
-            r.result='A';
-          }
-          if(r.total==66 && r.time<210){
-            r.result='A';
-          }
+      r.dateStr=app.date_format(r.addtime," `DAY/MM-DD` 周WW HH:II");
+      let min=parseInt(r.time/60);
+      r.timeStr=(min>0?(min+'分'):'')+(r.time%60)+'秒';
+      r.oklv=(((r.total-r.totalFail)/r.total)*100).toFixed(2)+'%'
+      r.sulv=(r.time/r.total).toFixed(2);
+      r.result='B';
+      if(r.total==132 && r.time<420){
+        r.result='A';
+      }
+      if(r.total==66 && r.time<210){
+        r.result='A';
+      }
+      if(r.totalFail==0){
+        if(r.sulv<2 ){
+          r.result='A+';
         }
+        if(r.sulv<1.36){
+          r.result='A++';
+        }
+
+      }
       rows.push(r);
     })
     this.setData({

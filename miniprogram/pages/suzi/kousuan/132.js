@@ -34,7 +34,10 @@ Page({
       this.getNum()
     },
     getNum(success=true){
-        let num=this.nums.shift();
+      if(this.nums.length<1){
+          return;
+      }
+      let num=this.nums.shift();
       if(!success){
         this.nums.push(this.data.num);
       }
@@ -65,15 +68,7 @@ Page({
         this.setIntervalTime=setInterval(()=>{
           if(!this.data.hasPlay) return;
           let obj={}
-          if(this.nums.length==0){
-            clearInterval(this.setIntervalTime);
-            this.setIntervalTime=null;
-            obj.gameover=true;
-            obj.totalFail=this.totalFail
-            this.saveScore();
-          }else{
-            this.time+=1;
-          }
+          this.time+=1;
           let min=parseInt(this.time/60);
           obj.timeStr=(min>0?(min+'分'):'')+(this.time%60)+'秒';
           this.setData(obj)
@@ -137,6 +132,16 @@ Page({
   success(){
     if(this.data.gameover) return;
     if(this.pass()) return;
+    if(this.nums.length==0){//答题完毕
+      clearInterval(this.setIntervalTime);
+      this.setIntervalTime=null;
+      this.setData({
+        gameover:true,
+        totalFail:this.totalFail
+      })
+      this.saveScore();
+      return;
+    }
     this.getNum();
   },
   fail(){
