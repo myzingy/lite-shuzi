@@ -112,6 +112,9 @@ Page({
         }
 
       }
+      if(r.totalFail>=5){
+        r.result='B';
+      }
       rows.push(r);
     })
     this.setData({
