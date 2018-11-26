@@ -179,7 +179,7 @@ Page({
     this.RM.start({
       duration:15*1000,
       format:'mp3',//acc/mp3
-      sampleRate:16000
+      sampleRate:16000,
     })
   },
 })
