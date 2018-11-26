@@ -20,6 +20,7 @@ Page({
   setIntervalTime:null,
   time:0,
   totalFail:0,
+  RM:null,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -32,6 +33,7 @@ Page({
       this.nums=shuffle(nums);
       this.total=this.nums.length;
       this.getNum()
+      this.RM=wx.getRecorderManager();
     },
     getNum(success=true){
       if(this.nums.length<1){
@@ -154,6 +156,7 @@ Page({
     this.setData({
       hasPlay:true,
     })
+    this.startRM();
   },
   saveScore(){
     const db = wx.cloud.database()
@@ -169,5 +172,14 @@ Page({
   },
   back(){
     wx.navigateBack();
+  },
+
+  ///RM
+  startRM(){
+    this.RM.start({
+      duration:15*1000,
+      format:'mp3',//acc/mp3
+      sampleRate:16000
+    })
   },
 })
