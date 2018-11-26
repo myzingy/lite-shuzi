@@ -1,5 +1,6 @@
 // miniprogram/pages/suzi/kousuan/132.js
 const {regeneratorRuntime} = getApp()
+const recorderManager = wx.getRecorderManager();
 Page({
 
     /**
@@ -33,7 +34,43 @@ Page({
       this.nums=shuffle(nums);
       this.total=this.nums.length;
       this.getNum()
-      this.RM=wx.getRecorderManager();
+      recorderManager.onStart((res) => {
+        console.log('recorder start',res)
+      });
+      recorderManager.onStop((res) => {
+        console.log('recorder onStop',res)
+      });
+      recorderManager.onInterruptionEnd((res) => {
+        console.log('recorder onInterruptionEnd',res)
+      });
+      recorderManager.onFrameRecorded((res) => {
+        const { frameBuffer } = res
+        let fs=wx.getFileSystemManager();
+        const base64 = wx.arrayBufferToBase64(frameBuffer)
+        fs.writeFile({
+          filePath: `${wx.env.USER_DATA_PATH}/dev.mp3`,
+          data:base64,
+          encoding:'base64',
+          success:(res=>{
+            console.log(res);
+            //wx.saveFile({
+            //  tempFilePath: `${wx.env.USER_DATA_PATH}/dev.mp3`,
+            //  success:(res=>{
+            //    console.log('wx.saveFile',res);
+            //  })
+            //})
+          })
+        })
+        console.log('recorder onFrameRecorded',frameBuffer)
+      });
+      recorderManager.onError((res) => {
+        console.log('recorder onError',res)
+      });
+      wx.getFileSystemManager().getSavedFileList({
+        success:(res=>{
+          console.log('getSavedFileList',res);
+        })
+      })
     },
     getNum(success=true){
       if(this.nums.length<1){
@@ -145,6 +182,7 @@ Page({
       return;
     }
     this.getNum();
+    this.startRM();
   },
   fail(){
     if(this.data.gameover) return;
@@ -176,10 +214,18 @@ Page({
 
   ///RM
   startRM(){
-    this.RM.start({
-      duration:15*1000,
+    console.log('startRM');
+
+    recorderManager.start({
+      duration:1000*600,
       format:'mp3',//acc/mp3
       sampleRate:16000,
+      numberOfChannels: 1,
+      //frameSize:7,
+      frameSize:15,
     })
+  },
+  stopRM(res){
+    console.log(res);
   },
 })
