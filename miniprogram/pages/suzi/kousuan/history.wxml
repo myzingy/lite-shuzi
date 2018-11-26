@@ -3,10 +3,10 @@
      home="pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
-<view class="page">
+<view class="page" wx:if="{{rows.length>0}}">
     <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
         <view class="header flex-vc">
-            <vievcw>{{item.dateStr}}</vievcw>
+            <viev>{{item.dateStr}}</viev>
         </view>
         <view class="content">
             <view class="row flex-lr">
@@ -25,5 +25,10 @@
             <image src="../../../images/jb7-2.png" wx:if="{{item.result=='A+'}}"></image>
             <image src="../../../images/jb7-3.png" wx:if="{{item.result=='A'}}"></image>
         </view>
+    </view>
+</view>
+<view class="page" wx:else="">
+    <view class="flex-vc" >
+        无任何记录
     </view>
 </view>
