@@ -227,11 +227,11 @@ Page({
     recorderManager.start({
       duration:1000*600,
       format:'mp3',//acc/mp3
-      sampleRate:16000,
-      //sampleRate: 44100,
+      //sampleRate:16000,
+      sampleRate: 8000,
       numberOfChannels: 1,
-      frameSize:50,
-      encodeBitRate: 96000,
+      frameSize:10,
+      //encodeBitRate: 96000,
     })
   },
   stopRM(res){
