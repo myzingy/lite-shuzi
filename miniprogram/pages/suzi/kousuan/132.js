@@ -34,6 +34,9 @@ Page({
       this.nums=shuffle(nums);
       this.total=this.nums.length;
       this.getNum()
+      recorderManager.onError((res) => {
+        console.log('recorder onError',res)
+      });
       recorderManager.onStart((res) => {
         console.log('recorder start',res)
       });
@@ -45,8 +48,9 @@ Page({
       });
       recorderManager.onFrameRecorded((res) => {
         const { frameBuffer } = res
-        let fs=wx.getFileSystemManager();
         const base64 = wx.arrayBufferToBase64(frameBuffer)
+        /*
+        let fs=wx.getFileSystemManager();
         fs.writeFile({
           filePath: `${wx.env.USER_DATA_PATH}/dev.mp3`,
           data:base64,
@@ -61,16 +65,20 @@ Page({
             //})
           })
         })
-        console.log('recorder onFrameRecorded',frameBuffer)
+        */
+        if(!res.isLastFrame){
+          wx.cloud.callFunction({
+            name: 'talk',
+            data: {
+              base64: base64,
+            }
+          }).then(function (res) {
+            console.log('wx.cloud.talk',res)
+          })
+        }
+        console.log('recorder onFrameRecorded',res)
+        recorderManager.stop()
       });
-      recorderManager.onError((res) => {
-        console.log('recorder onError',res)
-      });
-      wx.getFileSystemManager().getSavedFileList({
-        success:(res=>{
-          console.log('getSavedFileList',res);
-        })
-      })
     },
     getNum(success=true){
       if(this.nums.length<1){
@@ -221,8 +229,7 @@ Page({
       format:'mp3',//acc/mp3
       sampleRate:16000,
       numberOfChannels: 1,
-      //frameSize:7,
-      frameSize:15,
+      frameSize:7,
     })
   },
   stopRM(res){
