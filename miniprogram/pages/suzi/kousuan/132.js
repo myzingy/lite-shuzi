@@ -77,7 +77,7 @@ Page({
           })
         }
         console.log('recorder onFrameRecorded',res)
-        recorderManager.stop()
+        //recorderManager.stop()
       });
     },
     getNum(success=true){
@@ -228,8 +228,10 @@ Page({
       duration:1000*600,
       format:'mp3',//acc/mp3
       sampleRate:16000,
+      //sampleRate: 44100,
       numberOfChannels: 1,
-      frameSize:7,
+      frameSize:50,
+      encodeBitRate: 96000,
     })
   },
   stopRM(res){
