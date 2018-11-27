@@ -73,7 +73,7 @@ Page({
               base64: base64,
             }
           }).then(function (res) {
-            console.log('wx.cloud.talk',res)
+            console.log('wx.cloud.talk',res.result.result?res.result.result[0]:',,,',res.result.wavFile,res)
           })
         }
         console.log('recorder onFrameRecorded',res)
@@ -227,11 +227,11 @@ Page({
     recorderManager.start({
       duration:1000*600,
       format:'mp3',//acc/mp3
-      //sampleRate:16000,
-      sampleRate: 8000,
+      sampleRate:16000,
+      //encodeBitRate: 64000,
+      //sampleRate: 8000,
       numberOfChannels: 1,
       frameSize:10,
-      //encodeBitRate: 96000,
     })
   },
   stopRM(res){

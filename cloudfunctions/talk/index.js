@@ -27,17 +27,17 @@ function doUpload(url,filename,filesize=1024*1024){
       //'Content-Length':content.length
     }
   };
-  console.log('doUpload.options',options);
+  //console.log('doUpload.options',options);
 
   return new Promise(function (success,fail) {
     var req = require(isHttp?'http':'https').request(options,function(res){
       var _data='';
       res.on('data', function(chunk){
         _data += chunk;
-        console.log('POST.data',_data);
+        //console.log('POST.data',_data);
       });
       res.on('end', function(endRes){
-        console.log('POST.end',endRes);
+        //console.log('POST.end',endRes);
         //fn!=undefined && fn(_data);
         success(_data)
       });
@@ -97,7 +97,7 @@ function baiduApi(wavFile,cuid){
 
   HttpClient.setRequestInterceptor(function(requestOptions) {
     // 查看参数
-    console.log(requestOptions)
+    //console.log(requestOptions)
     // 修改参数
     requestOptions.timeout = 5000;
     // 返回参数
@@ -111,13 +111,19 @@ function baiduApi(wavFile,cuid){
   // 识别本地文件，附带参数
   return client.recognize(voiceBuffer, 'wav', 16000, {dev_pid: '1536', cuid: cuid})
 }
+function writeFile(fileName,dataBuffer){
+  return new Promise(function(success,fail){
+    fs.writeFile(fileName, dataBuffer, function(err) {
+      //console.log(fileName,err)
+      success(fileName);
+    });
+  })
+}
 exports.main = async (event, context) => {
   //update base64 mp3
   let dataBuffer = new Buffer(event.base64, 'base64');
-  let fileName="/tmp/"+event.userInfo.openId+".mp3";
-  fs.writeFile(fileName, dataBuffer, function(err) {
-    console.log(fileName,err)
-  });
+  let fileName="/tmp/"+event.userInfo.openId+Math.random()+".mp3";
+  fileName=await writeFile(fileName,dataBuffer);
   //let postRes=await post('http://api.rest7.com/v1/sound_convert.php',{format:'wav'})
   let postRes=await doUpload('http://api.rest7.com/v1/sound_convert.php',fileName)
   console.log('POST.res',postRes);
