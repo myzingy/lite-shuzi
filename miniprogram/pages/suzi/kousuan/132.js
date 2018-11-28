@@ -1,6 +1,7 @@
 // miniprogram/pages/suzi/kousuan/132.js
 const {regeneratorRuntime} = getApp()
 const recorderManager = wx.getRecorderManager();
+let socketTask;
 Page({
 
     /**
@@ -22,10 +23,12 @@ Page({
   time:0,
   totalFail:0,
   RM:null,
+  onSocketOpen:false,
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: async function (options) {
+      this.wssInit();
       wx.setKeepScreenOn({
         keepScreenOn: true
       });
@@ -48,7 +51,7 @@ Page({
       });
       recorderManager.onFrameRecorded((res) => {
         const { frameBuffer } = res
-        const base64 = wx.arrayBufferToBase64(frameBuffer)
+        //const base64 = wx.arrayBufferToBase64(frameBuffer)
         /*
         let fs=wx.getFileSystemManager();
         fs.writeFile({
@@ -66,47 +69,88 @@ Page({
           })
         })
         */
-        if(!res.isLastFrame){
-          wx.cloud.callFunction({
-            name: 'talk',
-            data: {
-              base64: base64,
-            }
-          }).then(function (res) {
-            console.log('wx.cloud.talk',res.result.result?res.result.result[0]:',,,',res.result.wavFile,res)
+        if(!res.isLastFrame && this.onSocketOpen){
+          // wx.cloud.callFunction({
+          //   name: 'talk',
+          //   data: {
+          //     base64: base64,
+          //   }
+          // }).then(function (res) {
+          //   console.log('wx.cloud.talk',res)
+          // })
+          socketTask.send({
+            data:frameBuffer
           })
         }
         console.log('recorder onFrameRecorded',res)
         //recorderManager.stop()
       });
-    },
-    getNum(success=true){
-      if(this.nums.length<1){
-          return;
-      }
-      let num=this.nums.shift();
-      if(!success){
-        this.nums.push(this.data.num);
-      }
-        this.setData({
-          num:num,
-          last:this.total-this.nums.length,
-          total:this.total,
+      /*
+      wx.connectSocket({
+        url:'wss://api.vking.wang:8888',
+        success:(res=>{
+          console.log('wss.connect',res)
+
+        }),
+        fail:(res=>{console.log('wss.connectFail',res)})
+      })
+      wx.onSocketOpen(function(res) {
+        console.log('wss.open',res)
+        wx.sendSocketMessage({
+          data:'hello'
         })
-    },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
+        this.onSocketOpen=true;
+      })
+      wx.onSocketMessage(res=>{
+        console.log('wss.msg',res)
+      })
+      */
 
     },
+  onReady(){
 
+  },
+  async wssInit(){
+    if(!this.onSocketOpen) {
+      socketTask = wx.connectSocket({
+        url: 'wss://vking.wang:8888',
+        //url: 'wss://192.168.0.118:8888',
+        header:{
+          'content-type': 'application/json'
+        },
+        protocols: ['protocol1'],
+        method:"GET",
+        success: (res => {
+          console.log('wss.connect', res)
+        }),
+        fail: (res => {
+          console.log('wss.connectFail', res)
+        })
+      });
+      socketTask.onOpen(res=>{
+        console.log('wss.open',res)
+        this.onSocketOpen=true;
+        socketTask.send({
+          data:'hello'
+        });
+      })
+      socketTask.onMessage(res=>{
+        console.log('wss.msg',res)
+      });
+      socketTask.onClose(res=>{
+        console.log('wss.close',res)
+      });
+      socketTask.onError(res=>{
+        console.log('wss.error',res)
+      });
+    }
+  },
     /**
      * 生命周期函数--监听页面显示
      */
     onShow: async function () {
-        let sys=wx.getSystemInfoSync();
-        console.log(sys)
+      let sys=wx.getSystemInfoSync();
+      console.log(sys)
       this.setData({
         width:sys.windowHeight,
         height:sys.windowWidth,
@@ -134,6 +178,10 @@ Page({
       }
       this.setIntervalTime=null;
       this.time=0;
+      recorderManager.stop();
+      if(this.onSocketOpen){
+        socketTask.close()
+      }
       wx.redirectTo({
         url:'./index'
       })
@@ -143,7 +191,10 @@ Page({
      * 生命周期函数--监听页面卸载
      */
     onUnload: function () {
-
+      recorderManager.stop();
+      if(this.onSocketOpen){
+        socketTask.close()
+      }
     },
 
     /**
@@ -166,6 +217,20 @@ Page({
     onShareAppMessage: function () {
 
     },
+  getNum(success=true){
+    if(this.nums.length<1){
+      return;
+    }
+    let num=this.nums.shift();
+    if(!success){
+      this.nums.push(this.data.num);
+    }
+    this.setData({
+      num:num,
+      last:this.total-this.nums.length,
+      total:this.total,
+    })
+  },
   passFlag:false,
   pass(){
     if(this.passFlag) return true;
@@ -231,7 +296,7 @@ Page({
       //encodeBitRate: 64000,
       //sampleRate: 8000,
       numberOfChannels: 1,
-      frameSize:10,
+      frameSize:20,
     })
   },
   stopRM(res){
