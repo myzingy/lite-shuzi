@@ -135,7 +135,7 @@ Page({
         });
       })
       socketTask.onMessage(res=>{
-        console.log('wss.msg',res)
+        console.log('wss.msg',res.data)
       });
       socketTask.onClose(res=>{
         console.log('wss.close',res)
@@ -296,7 +296,7 @@ Page({
       //encodeBitRate: 64000,
       //sampleRate: 8000,
       numberOfChannels: 1,
-      frameSize:20,
+      frameSize:7,
     })
   },
   stopRM(res){
