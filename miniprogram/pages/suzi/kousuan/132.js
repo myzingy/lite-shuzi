@@ -22,12 +22,13 @@ Page({
   setIntervalTime:null,
   time:0,
   totalFail:0,
-  RM:null,
+  rmOpen:false,
   onSocketOpen:false,
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: async function (options) {
+      this.initRM();
       this.wssInit();
       wx.setKeepScreenOn({
         keepScreenOn: true
@@ -37,75 +38,6 @@ Page({
       this.nums=shuffle(nums);
       this.total=this.nums.length;
       this.getNum()
-      recorderManager.onError((res) => {
-        console.log('recorder onError',res)
-      });
-      recorderManager.onStart((res) => {
-        console.log('recorder start',res)
-      });
-      recorderManager.onStop((res) => {
-        console.log('recorder onStop',res)
-      });
-      recorderManager.onInterruptionEnd((res) => {
-        console.log('recorder onInterruptionEnd',res)
-      });
-      recorderManager.onFrameRecorded((res) => {
-        const { frameBuffer } = res
-        //const base64 = wx.arrayBufferToBase64(frameBuffer)
-        /*
-        let fs=wx.getFileSystemManager();
-        fs.writeFile({
-          filePath: `${wx.env.USER_DATA_PATH}/dev.mp3`,
-          data:base64,
-          encoding:'base64',
-          success:(res=>{
-            console.log(res);
-            //wx.saveFile({
-            //  tempFilePath: `${wx.env.USER_DATA_PATH}/dev.mp3`,
-            //  success:(res=>{
-            //    console.log('wx.saveFile',res);
-            //  })
-            //})
-          })
-        })
-        */
-        if(!res.isLastFrame && this.onSocketOpen){
-          // wx.cloud.callFunction({
-          //   name: 'talk',
-          //   data: {
-          //     base64: base64,
-          //   }
-          // }).then(function (res) {
-          //   console.log('wx.cloud.talk',res)
-          // })
-          socketTask.send({
-            data:frameBuffer
-          })
-        }
-        console.log('recorder onFrameRecorded',res)
-        //recorderManager.stop()
-      });
-      /*
-      wx.connectSocket({
-        url:'wss://api.vking.wang:8888',
-        success:(res=>{
-          console.log('wss.connect',res)
-
-        }),
-        fail:(res=>{console.log('wss.connectFail',res)})
-      })
-      wx.onSocketOpen(function(res) {
-        console.log('wss.open',res)
-        wx.sendSocketMessage({
-          data:'hello'
-        })
-        this.onSocketOpen=true;
-      })
-      wx.onSocketMessage(res=>{
-        console.log('wss.msg',res)
-      })
-      */
-
     },
   onReady(){
 
@@ -262,6 +194,7 @@ Page({
     if(this.pass()) return;
     this.totalFail++;
     this.getNum(false);
+    this.startRM();
   },
   start(){
     this.setData({
@@ -287,8 +220,8 @@ Page({
 
   ///RM
   startRM(){
+    if(this.rmOpen) return;
     console.log('startRM');
-
     recorderManager.start({
       duration:1000*600,
       format:'mp3',//acc/mp3
@@ -302,4 +235,40 @@ Page({
   stopRM(res){
     console.log(res);
   },
+  initRM(){
+    recorderManager.onError((res) => {
+      this.rmOpen=false;
+      console.log('recorder onError',res)
+    });
+    recorderManager.onStart((res) => {
+      this.rmOpen=true;
+      console.log('recorder start',res)
+    });
+    recorderManager.onStop((res) => {
+      this.rmOpen=false;
+      console.log('recorder onStop',res)
+    });
+    recorderManager.onInterruptionEnd((res) => {
+      console.log('recorder onInterruptionEnd',res)
+    });
+    recorderManager.onFrameRecorded((res) => {
+      const { frameBuffer } = res
+      //const base64 = wx.arrayBufferToBase64(frameBuffer)
+      if(!res.isLastFrame && this.onSocketOpen){
+        // wx.cloud.callFunction({
+        //   name: 'talk',
+        //   data: {
+        //     base64: base64,
+        //   }
+        // }).then(function (res) {
+        //   console.log('wx.cloud.talk',res)
+        // })
+        socketTask.send({
+          data:frameBuffer
+        })
+      }
+      console.log('recorder onFrameRecorded',res)
+      //recorderManager.stop()
+    });
+  }
 })
