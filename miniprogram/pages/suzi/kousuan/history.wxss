@@ -36,3 +36,8 @@
   width: 100%;
   height: 100%;
 }
+.art{
+  font-size:24rpx;
+  color:#ce6300;
+  margin-top:-20rpx;
+}

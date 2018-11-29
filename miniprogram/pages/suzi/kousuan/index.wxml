@@ -15,7 +15,7 @@
     </checkbox-group>
     <view class="tips-ai">
         开启 “智能辅助判断”，会自动识别语音是否正确，正确将跳到下一题，错误将停留在当前题目；
-        <view style="color: #ff007a;text-decoration : underline;">建议开启，保持环境安静，佩戴耳麦可以提高识别率</view>
+        <view style="color: #ff007a;text-decoration : underline;">虽然在努力识别，但目前识别率很低；还是需要进行家长对错判断</view>
     </view>
     <button type="primary" bindtap="start">开 始</button>
     <view class="flex-vc history" bindtap="history">

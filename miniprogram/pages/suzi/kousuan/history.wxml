@@ -8,6 +8,9 @@
         <view class="header flex-vc">
             <viev>{{item.dateStr}}</viev>
         </view>
+        <viev class="flex-vc art" wx:if="{{item.art}}">
+            场景：{{item.art}}
+        </viev>
         <view class="content">
             <view class="row flex-lr">
                 <view class="label">题数<text class="msg">{{item.total}}</text></view>

@@ -9,11 +9,12 @@ Page({
       items: [
         {key: '+', label: '加法', checked: true},
         {key: '-', label: '减法', checked: true},
-        {key: 'AI', label: '智能辅助判断', checked: true},
+        {key: 'AI', label: '智能辅助判断', checked: false},
       ]
     },
     nums:[],
   hasAI:true,
+  art:'+,-',
     /**
      * 生命周期函数--监听页面加载
      */
@@ -74,7 +75,7 @@ Page({
         return getApp().toast('加减必须选一种');
       }
       wx.navigateTo({
-        url:'./132?hasAI='+this.hasAI
+        url:'./132?hasAI='+(this.hasAI?1:'')+'&art='+this.art
       });
     },
   greateNums(fua=true,fus=true){
@@ -96,6 +97,7 @@ Page({
   checkboxChange(e){
     console.log(this.data.items);
     let val=getApp().val(e).toString();
+    this.art=val;
     let fua=val.indexOf('+')>-1;
     let fus=val.indexOf('-')>-1;
     this.hasAI=val.indexOf('AI')>-1;

@@ -24,10 +24,15 @@ Page({
   totalFail:0,
   rmOpen:false,
   onSocketOpen:false,
+  hasAI:false,
+  art:'',
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: async function (options) {
+      console.log('options',options)
+      this.hasAI=options.hasAI;
+      this.art=options.art;
       this.initRM();
       this.wssInit();
       wx.setKeepScreenOn({
@@ -43,6 +48,7 @@ Page({
 
   },
   async wssInit(){
+    if(!this.hasAI) return;
     if(!this.onSocketOpen) {
       socketTask = wx.connectSocket({
         url: 'wss://vking.wang:8888',
@@ -67,7 +73,17 @@ Page({
         });
       })
       socketTask.onMessage(res=>{
-        console.log('wss.msg',res.data)
+        if(this.data.num){
+          let num=this.data.num.match(/([\d]+)([\+\-])([\d]+)/);
+          if(num){
+            let x=parseInt(num[1])+parseInt(num[3])*(num[2]=='+'?1:-1);
+            console.log('wss.msg',res.data,x)
+            if(x==res.data){
+              this.success()
+            }
+          }
+        }
+
       });
       socketTask.onClose(res=>{
         console.log('wss.close',res)
@@ -211,6 +227,7 @@ Page({
         total:this.total,
         totalFail:this.totalFail,
         time:this.time,
+        art:this.art,
       }
     })
   },
@@ -220,13 +237,14 @@ Page({
 
   ///RM
   startRM(){
+    if(!this.hasAI) return;
     if(this.rmOpen) return;
     console.log('startRM');
     recorderManager.start({
       duration:1000*600,
       format:'mp3',//acc/mp3
       sampleRate:16000,
-      //encodeBitRate: 64000,
+      encodeBitRate: 96000,
       //sampleRate: 8000,
       numberOfChannels: 1,
       frameSize:7,
@@ -236,6 +254,7 @@ Page({
     console.log(res);
   },
   initRM(){
+    if(!this.hasAI) return;
     recorderManager.onError((res) => {
       this.rmOpen=false;
       console.log('recorder onError',res)
