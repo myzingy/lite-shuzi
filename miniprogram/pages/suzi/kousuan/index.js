@@ -13,7 +13,7 @@ Page({
       ]
     },
     nums:[],
-  hasAI:true,
+  hasAI:false,
   art:'+,-',
     /**
      * 生命周期函数--监听页面加载
