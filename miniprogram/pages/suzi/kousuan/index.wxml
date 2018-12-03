@@ -18,8 +18,5 @@
         <view style="color: #ff007a;text-decoration : underline;">虽然在努力识别，但目前识别率很低；还是需要进行家长对错判断</view>
     </view>
     <button type="primary" bindtap="start">开 始</button>
-    <view class="flex-vc history" bindtap="history">
-        <icon type="waiting" size="40" color="#d9d900" />
-        纪 录
-    </view>
 </view>
+<navbar></navbar>
