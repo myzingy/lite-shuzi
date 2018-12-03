@@ -24,7 +24,7 @@
 }
 .nav .item .iconfont{
     line-height: 60rpx;
-    font-size: 40rpx;
+    font-size: 50rpx;
 }
 .nav .item .text{
     line-height: 30rpx;

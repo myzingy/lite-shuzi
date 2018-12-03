@@ -1,0 +1,8 @@
+{
+  "navigationBarTextStyle": "light",
+  "usingComponents": {
+    "nav": "/miniprogram_npm/vktool/nav",
+    "navbar":"/components/navbar/navbar",
+    "formids": "/miniprogram_npm/vktool/formids"
+  }
+}

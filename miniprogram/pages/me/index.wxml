@@ -1,0 +1,44 @@
+<!--index.wxml-->
+<nav hasHome
+     home="pages/suzi/kousuan/index"
+     backgroundColor="#0099FF"
+     color="#fefefe">口算卡 132</nav>
+<view class="container">
+
+  <!-- 用户 openid -->
+  <view class="userinfo">
+    <button 
+      open-type="getUserInfo" 
+      bindgetuserinfo="onGetUserInfo"
+      class="userinfo-avatar"
+      style="background-image: url({{avatarUrl}})"
+    ></button>
+    <view wx:if="{{avatarUrl=='./user-unlogin.png'}}">
+      <button class="userinfo-nickname" open-type="getUserInfo"
+              bindgetuserinfo="onGetUserInfo">点击设置头像</button>
+    </view>
+    <view wx:else="" class="flex-ll">
+      <input placeholder="请填写 小名/昵称"
+             bindinput="inputNickname"
+             bindtap="editNickname"
+             data-type="input"
+             maxlength="6" disabled="{{!hasEdit}}"
+             style="width: 260rpx;" value="{{us.nickname}}"/>
+      <view bindtap="editNickname"
+              class="iconfont {{hasEdit?'icon-dui':'icon-edit'}}">
+        {{hasEdit?'保存':'编辑'}}
+      </view>
+    </view>
+  </view>
+
+
+  <!-- 操作数据库 -->
+  <view class="uploader">
+    <navigator url="/pages/class/setting" open-type="navigate" class="uploader-text">
+      <text>设置班级</text>
+    </navigator>
+  </view>
+
+
+</view>
+<navbar></navbar>
