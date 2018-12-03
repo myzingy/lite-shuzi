@@ -42,7 +42,7 @@
       <view class="item">
         <view class="flex-lr title">
           <view>设置班级</view>
-          <view>...</view>
+          <view></view>
         </view>
         <view class="info">设置班级可以查看班级同学记录</view>
       </view>

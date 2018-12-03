@@ -1,0 +1,7 @@
+{
+  "navigationBarTextStyle": "light",
+  "usingComponents": {
+    "nav": "/miniprogram_npm/vktool/nav",
+    "navbar":"/components/navbar/navbar"
+  }
+}

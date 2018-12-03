@@ -1,0 +1,25 @@
+<!--miniprogram/pages/class/setting.wxml-->
+<nav hasHome
+     home="/pages/suzi/kousuan/index"
+     backgroundColor="#0099FF"
+     color="#fefefe">设置班级
+</nav>
+<view class="page">
+    <view class="item">
+        <view class="tip">准确无误填写班主任才能找到对应班级</view>
+        <input class="" placeholder="请填写班主任姓名"
+               data-key="teacher" value="{{us.teacher}}"
+               maxlength="4" bindinput="inputNickname"/>
+    </view>
+    <view class="item">
+        <view class="tip">小孩姓名只在班级展示</view>
+        <input class="" placeholder="请填写小孩姓名"  data-key="name" value="{{us.name}}"
+               maxlength="4" bindinput="inputNickname"/>
+    </view>
+    <view class="item">
+        <view class="tip">小孩学号只在班级展示</view>
+        <input class="" placeholder="请填写小孩学号"  data-key="number" value="{{us.number}}"
+               type="number" bindinput="inputNickname"/>
+    </view>
+    <button bindtap="saveSetting"  type="primary">保 存</button>
+</view>

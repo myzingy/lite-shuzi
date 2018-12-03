@@ -36,7 +36,9 @@ Page({
       }
     })
   },
+  onShow(){
 
+  },
   onGetUserInfo: function(e) {
     console.log('onGetUserInfo',e);
     if (!this.logged && e.detail.userInfo) {

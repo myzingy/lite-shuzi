@@ -1,0 +1,10 @@
+/* miniprogram/pages/class/setting.wxss */
+.item{
+    margin: 60rpx 0;
+    border-bottom: 1rpx solid #999999;
+}
+.item input,.placeholder-class{
+    line-height: 60rpx;
+    height: 60rpx;
+    font-size: 50rpx;
+}
