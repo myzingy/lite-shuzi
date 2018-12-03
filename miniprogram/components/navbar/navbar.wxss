@@ -1,0 +1,31 @@
+/* components/nav/nav.wxss */
+@import "../../app.wxss";
+@import "../../style/iconfont.wxss";
+.nav{
+    height:120rpx;
+    line-height:120rpx;
+    position: fixed;
+    bottom: 0;
+    border-top: 1rpx solid #999;
+    width:100%;
+    font-size: 30rpx;
+    font-weight: bold;
+}
+.nav .item{
+    width: 33%;
+    border-right: 1rpx solid #ccc;
+    height: 120rpx;
+}
+.nav .item .active{
+    color:#007aff;
+}
+.nav .item:last-child{
+    border-right-width: 0;
+}
+.nav .item .iconfont{
+    line-height: 60rpx;
+    font-size: 40rpx;
+}
+.nav .item .text{
+    line-height: 30rpx;
+}

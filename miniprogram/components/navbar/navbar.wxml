@@ -1,0 +1,27 @@
+<!--components/navbar/navbar.wxml-->
+<view class="nav flex-lr">
+    <formids class="item"
+             open-type="redirect"
+             url="/pages/suzi/kousuan/index">
+        <view class="item flex-vc {{cur=='/pages/suzi/kousuan/index'?'active':''}}" style="width: 100%">
+            <view class="iconfont icon-home"></view>
+            <view class="text">首 页</view>
+        </view>
+    </formids>
+    <formids class="item"
+             open-type="redirect"
+             url="/pages/suzi/kousuan/history">
+        <view class="item flex-vc {{cur=='/pages/suzi/kousuan/history'?'active':''}}" style="width: 100%">
+            <view class="iconfont icon-history"></view>
+            <view class="text">纪 录</view>
+        </view>
+    </formids>
+    <formids class="item"
+             open-type="redirect"
+             url="/pages/me/index">
+        <view class="item flex-vc {{cur=='/pages/me/index'?'active':''}}" style="width: 100%">
+            <view class="iconfont icon-me"></view>
+            <view class="text">我 的</view>
+        </view>
+    </formids>
+</view>

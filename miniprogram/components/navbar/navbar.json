@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "formids": "/miniprogram_npm/vktool/formids"
+  }
+}
