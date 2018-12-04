@@ -41,3 +41,20 @@
   color:#ce6300;
   margin-top:-20rpx;
 }
+.enterClass{
+  position: fixed;
+  right: 40rpx;
+  bottom:120rpx;
+  border: 1rpx solid #007aff;
+  background-color: #007aff;
+  color:#fefefe;
+  border-radius: 50%;
+  box-shadow: 0rpx 0rpx 30rpx  5rpx #007aff;
+  font-size: 24rpx;
+}
+.enterClass .text{
+  width: 60rpx;
+  height: 60rpx;
+  margin: 10rpx;
+  text-align: center;
+}

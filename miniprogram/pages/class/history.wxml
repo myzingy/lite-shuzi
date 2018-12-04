@@ -7,7 +7,7 @@
     <view>日期：{{date}}</view>
     <view class="iconfont icon-date" style="font-weight: bold;font-size: 50rpx;"></view>
 </view>
-<view class="page" wx:if="{{rows.length>0}}">
+<view class="page" wx:if="{{rows.length>0}}" style="margin-bottom: 120rpx;">
     <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
         <view class="header flex-vc">
             <viev>（{{item.us.number}}）+{{item.us.name}}，{{item.dateStr}}</viev>

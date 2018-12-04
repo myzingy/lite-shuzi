@@ -1,5 +1,6 @@
 // miniprogram/pages/suzi/kousuan/132.js
-const {regeneratorRuntime} = getApp()
+const app = getApp()
+const {regeneratorRuntime} = app
 const recorderManager = wx.getRecorderManager();
 let socketTask;
 Page({
@@ -38,7 +39,7 @@ Page({
       wx.setKeepScreenOn({
         keepScreenOn: true
       });
-      let nums=await getApp().cache('nums');
+      let nums=await app.cache('nums');
       const shuffle = items => items.sort(() => Math.random() - 0.5);
       this.nums=shuffle(nums);
       this.total=this.nums.length;

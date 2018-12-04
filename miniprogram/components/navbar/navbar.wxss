@@ -10,6 +10,7 @@
     width:100%;
     font-size: 30rpx;
     font-weight: bold;
+    background: #fefefe;
 }
 .nav .item{
     width: 33%;

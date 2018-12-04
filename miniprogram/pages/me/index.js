@@ -1,6 +1,6 @@
 //index.js
 const app = getApp()
-const {regeneratorRuntime} = getApp()
+const {regeneratorRuntime} = app
 Page({
   data: {
     avatarUrl: './user-unlogin.png',

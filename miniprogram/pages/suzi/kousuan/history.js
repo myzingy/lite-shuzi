@@ -1,4 +1,6 @@
 // miniprogram/pages/suzi/kousuan/history.js
+const app = getApp()
+const {regeneratorRuntime} = app
 Page({
 
     /**
@@ -57,7 +59,7 @@ Page({
      */
     onReachBottom: function () {
         if(!this.hasMore){
-            return getApp().toast('没有数据了');
+            return app.toast('没有数据了');
         }
         this.offset+=this.limit;
         this.getHistory();
@@ -69,10 +71,10 @@ Page({
     onShareAppMessage: function () {
 
     },
-    getHistory(){
+    async getHistory(){
       const db = wx.cloud.database()
       db.collection('shuzi132')
-        .where({_openid: getApp().globalData.openid})
+        //.where({_openid:await app.openid()})
         .orderBy('addtime', 'desc')
         .skip(this.offset)
         .limit(this.limit)
@@ -89,7 +91,6 @@ Page({
     },
   formatRows(data){
     let rows=this.data.rows;
-    let app=getApp();
     data.forEach(r=>{
       r.dateStr=app.date_format(r.addtime," `DAY/MM-DD` 周WW HH:II");
       let min=parseInt(r.time/60);

@@ -164,7 +164,6 @@ Page({
   },
   formatRows(data){
     let rows=this.data.rows;
-    let app=getApp();
     data.forEach(r=>{
       r.dateStr=app.date_format(r.addtime,"周WW HH:II");
       let min=parseInt(r.time/60);

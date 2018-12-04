@@ -1,5 +1,6 @@
 // miniprogram/pages/suzi/kousuan/index.js
-
+const app = getApp()
+const {regeneratorRuntime} = app
 Page({
 
     /**
@@ -72,7 +73,7 @@ Page({
     },
     start(){
       if(this.nums.length<1){
-        return getApp().toast('加减必须选一种');
+        return app.toast('加减必须选一种');
       }
       wx.navigateTo({
         url:'./132?hasAI='+(this.hasAI?1:'')+'&art='+this.art
@@ -92,11 +93,11 @@ Page({
     }
     this.nums=nums;
     console.log(this.nums,this.nums.length)
-    getApp().cache('nums',this.nums);
+    app.cache('nums',this.nums);
   },
   checkboxChange(e){
     console.log(this.data.items);
-    let val=getApp().val(e).toString();
+    let val=app.val(e).toString();
     this.art=val;
     let fua=val.indexOf('+')>-1;
     let fus=val.indexOf('-')>-1;

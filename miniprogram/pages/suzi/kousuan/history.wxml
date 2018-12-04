@@ -3,7 +3,7 @@
      home="/pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
-<view class="page" wx:if="{{rows.length>0}}">
+<view class="page" wx:if="{{rows.length>0}}" style="margin-bottom: 200rpx;">
     <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
         <view class="header flex-vc">
             <viev>{{item.dateStr}}</viev>
@@ -36,3 +36,10 @@
     </view>
 </view>
 <navbar></navbar>
+<view class="enterClass">
+    <formids
+            url="/pages/class/history"
+            open-type="navigate" >
+        <view class="text">进入班级</view>
+    </formids>
+</view>
