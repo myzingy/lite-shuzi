@@ -34,10 +34,10 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  getUserSetting(){
+  async getUserSetting(){
     const db = wx.cloud.database();
     db.collection('user_setting').where({
-      _openid: this.data.openid
+      _openid: await app.openid()
     }).get({
       success: res => {
         this.setData({

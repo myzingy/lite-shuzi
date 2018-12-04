@@ -1,0 +1,64 @@
+/* miniprogram/pages/class/history.wxss */
+/* miniprogram/pages/suzi/kousuan/history.wxss */
+@import "../../style/iconfont.wxss";
+.page{
+    margin-top: 50rpx;
+}
+.pack{
+    position: relative;
+    border: 2rpx solid #ececec;
+    border-radius: 10rpx;
+    padding: 10rpx;
+    box-shadow: 2rpx 2rpx 14rpx 6rpx rgba(231,228,228,.5);
+    margin-bottom: 30rpx;
+}
+.pack .header{
+    height: 100rpx;
+    line-height: 100rpx;
+    font-size: 40rpx;
+}
+.pack .row{
+    margin-bottom: 10rpx;
+}
+.pack .row .msg{
+    color: #0063ce;
+    padding-left: 10rpx;
+}
+
+.jb7{
+    width: 100rpx;
+    height: 100rpx;
+    position: absolute;
+    top:-30rpx;
+    right: -30rpx;
+    transform: rotate(45deg);
+
+}
+.jb7 image{
+    width: 100%;
+    height: 100%;
+}
+.art{
+    font-size:24rpx;
+    color:#ce6300;
+    margin-top:-20rpx;
+}
+
+.calendar{
+    position: fixed;
+    bottom: 0;
+    height: 700rpx;
+    width:100%;
+}
+.header-style{
+    background: #188be4 ;
+    color: #fff;
+}
+.active-coloro {
+    color: #fff;
+    background: #188be4;
+}
+.active-colort {
+    color: #fff;
+    background: #b8d5eb;
+}

@@ -12,16 +12,11 @@ App({
         traceUser: true,
       })
     }
-
     this.globalData = {}
-    wx.cloud.callFunction({
-      name: 'login',
-      data: {},
-    }).then(res=>{
-      this.globalData.openid = res.result.openid
-    })
+    this.login()
+
   },
-  onShow:function() {
+  onShow:async function() {
     if (wx.canIUse('getUpdateManager')) {
       const updateManager = wx.getUpdateManager();
       updateManager.onCheckForUpdate(function (res) {
@@ -40,5 +35,41 @@ App({
   },
   onHide(){
     this.cache_clear()
-  }
+  },
+  async login(){
+    try{
+      let openid=await this.cache('openid');
+      if(openid){
+        return this.globalData.openid=openid;
+      }
+    }catch(e){}
+    return new Promise((success,fail)=>{
+      wx.cloud.callFunction({
+        name: 'login',
+        data: {},
+      }).then(res=>{
+        console.log('login.success',res)
+        this.globalData.openid=res.result.openid
+        this.cache('openid',this.globalData.openid);
+        success(res.result.openid);
+      }).catch((e)=>{
+        console.log('login.fail',e)
+        return this.login()
+      })
+    })
+  },
+  async openid(){
+    return new Promise(async (success,fail)=>{
+      if(this.globalData.openid){
+        return success(this.globalData.openid);
+      }else{
+        try{
+          this.globalData.openid=await this.cache('openid');
+          if(this.globalData.openid){
+            return success(this.globalData.openid)
+          }
+        }catch(e){}
+      }
+    })
+  },
 })

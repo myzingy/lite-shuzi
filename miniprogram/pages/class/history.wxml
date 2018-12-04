@@ -1,0 +1,47 @@
+<!--miniprogram/pages/class/history.wxml-->
+<nav hasHome
+     home="/pages/suzi/kousuan/index"
+     backgroundColor="#0099FF"
+     color="#fefefe">班级成绩</nav>
+<view class="flex-cc" bindtap="showCalendar">
+    <view>{{date}}</view>
+    <view class="iconfont icon-date" style="font-weight: bold;font-size: 50rpx;"></view>
+</view>
+<view class="page" wx:if="{{rows.length>0}}">
+    <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
+        <view class="header flex-vc">
+            <viev>{{item.dateStr}}</viev>
+        </view>
+        <viev class="flex-vc art" wx:if="{{item.art}}">
+            场景：{{item.art}}
+        </viev>
+        <view class="content">
+            <view class="row flex-lr">
+                <view class="label">题数<text class="msg">{{item.total}}</text></view>
+                <view class="label">出错<text class="msg">{{item.totalFail}}次</text></view>
+                <view class="label">正确率<text class="msg">{{item.oklv}}</text></view>
+            </view>
+            <view class="row flex-lr">
+                <view class="label">用时<text class="msg">{{item.timeStr}}</text></view>
+                <view class="label">速率<text class="msg">{{item.sulv}}秒/题</text></view>
+                <view class="label">综合评分<text class="msg">{{item.result}}</text></view>
+            </view>
+        </view>
+        <view class="jb7">
+            <image src="/images/jb7-1.png" wx:if="{{item.result=='A++'}}"></image>
+            <image src="/images/jb7-2.png" wx:if="{{item.result=='A+'}}"></image>
+            <image src="/images/jb7-3.png" wx:if="{{item.result=='A'}}"></image>
+        </view>
+    </view>
+</view>
+<view class="page" wx:else="">
+    <view class="flex-vc" >
+        无任何记录
+    </view>
+</view>
+<view class="calendar" hidden="{{hideCalendar}}">
+    <calendar header-style="header-style"
+              circle_show="{{false}}"
+              bindselectDate="selectDate"
+    />
+</view>
