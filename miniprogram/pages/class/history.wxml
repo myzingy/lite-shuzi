@@ -10,7 +10,7 @@
 <view class="page" wx:if="{{rows.length>0}}" style="margin-bottom: 120rpx;">
     <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
         <view class="header flex-vc">
-            <viev>（{{item.us.number}}）+{{item.us.name}}，{{item.dateStr}}</viev>
+            <viev>（{{item.us.number}}）{{item.us.name}}，{{item.dateStr}}</viev>
         </view>
         <viev class="flex-vc art" wx:if="{{item.art}}">
             场景：{{item.art}}

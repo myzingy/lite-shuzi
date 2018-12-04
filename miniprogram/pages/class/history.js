@@ -42,10 +42,13 @@ Page({
       });
       return;
     }
-
-
+    if(!this.us){
+      wx.navigateTo({
+        url:'./setting'
+      });
+      return;
+    }
     console.log('this.us',this.us);
-    if(!this.us) return;
     await this.getClassAllOpenids();
     console.log('this.openids',this.openids);
     this.getClassHistory()
@@ -103,6 +106,8 @@ Page({
     if(e.detail.date!=this.data.date){
       obj.date=e.detail.date;
       dflag=true;
+      obj.rows=[];
+      this.offset=0;
     }
     this.setData(obj);
     if(dflag){
