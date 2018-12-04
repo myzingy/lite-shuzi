@@ -43,7 +43,7 @@
 }
 .enterClass{
   position: fixed;
-  right: 40rpx;
+  right: 320rpx;
   bottom:120rpx;
   border: 1rpx solid #007aff;
   background-color: #007aff;
