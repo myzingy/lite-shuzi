@@ -49,6 +49,7 @@ page {
   width: 100%;
   padding: 20rpx 20rpx 20rpx 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
+  position: relative;
 }
 .uploader-view{
   width: 90%;
@@ -67,4 +68,18 @@ page {
 .item .info{
   font-size: 24rpx;
   text-align: left;
+}
+.enterClass{
+  position: absolute;
+  right: 0;
+  top:0;
+  border: 1rpx solid #ccc;
+  background-color: #007aff;
+  color:#fefefe;
+  border-radius: 50%;
+}
+.enterClass .text{
+  width: 80rpx;
+  height: 80rpx;
+  margin: 30rpx;
 }

@@ -39,14 +39,17 @@
           style="width: 100%;">
     <view class="uploader">
       <view class="uploader-view flex-lr">
-      <view class="item">
-        <view class="flex-lr title">
-          <view>设置班级</view>
-          <view></view>
+        <view class="item">
+          <view class="flex-lr title">
+            <view>设置班级</view>
+            <view></view>
+          </view>
+          <view class="info">设置班级可以查看班级同学记录</view>
         </view>
-        <view class="info">设置班级可以查看班级同学记录</view>
+        <view class="iconfont icon-gt"></view>
       </view>
-      <view class="iconfont icon-gt"></view>
+      <view class="enterClass">
+        <view class="text">进入班级</view>
       </view>
     </view>
   </formids>
