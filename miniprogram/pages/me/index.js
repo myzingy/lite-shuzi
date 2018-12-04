@@ -18,7 +18,6 @@ Page({
       })
       return
     }
-    this.getUserSetting();
     // 获取用户信息
     app.promise('wx.getSetting',{}).then(res=>{
       console.log('wx.getSetting',res);
@@ -37,7 +36,7 @@ Page({
     })
   },
   onShow(){
-
+    this.getUserSetting();
   },
   onGetUserInfo: function(e) {
     console.log('onGetUserInfo',e);

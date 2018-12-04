@@ -48,11 +48,16 @@
         </view>
         <view class="iconfont icon-gt"></view>
       </view>
-      <view class="enterClass">
-        <view class="text">进入班级</view>
-      </view>
     </view>
   </formids>
+
+  <view class="enterClass" wx:if="{{us.teacher}}">
+    <formids
+            url="/pages/class/history"
+            open-type="navigate" >
+    <view class="text">进入班级</view>
+    </formids>
+  </view>
 
 
 </view>

@@ -71,15 +71,17 @@ page {
 }
 .enterClass{
   position: absolute;
-  right: 0;
-  top:0;
-  border: 1rpx solid #ccc;
+  right: 40rpx;
+  top:300rpx;
+  border: 1rpx solid #007aff;
   background-color: #007aff;
   color:#fefefe;
   border-radius: 50%;
+  box-shadow: 0rpx 0rpx 50rpx  10rpx #007aff;
 }
 .enterClass .text{
   width: 80rpx;
   height: 80rpx;
   margin: 30rpx;
+  text-align: center;
 }
