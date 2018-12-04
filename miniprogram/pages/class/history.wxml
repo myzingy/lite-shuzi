@@ -4,13 +4,13 @@
      backgroundColor="#0099FF"
      color="#fefefe">班级成绩</nav>
 <view class="flex-cc" bindtap="showCalendar">
-    <view>{{date}}</view>
+    <view>日期：{{date}}</view>
     <view class="iconfont icon-date" style="font-weight: bold;font-size: 50rpx;"></view>
 </view>
 <view class="page" wx:if="{{rows.length>0}}">
     <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
         <view class="header flex-vc">
-            <viev>{{item.dateStr}}</viev>
+            <viev>（{{item.us.number}}）+{{item.us.name}}，{{item.dateStr}}</viev>
         </view>
         <viev class="flex-vc art" wx:if="{{item.art}}">
             场景：{{item.art}}
@@ -43,5 +43,7 @@
     <calendar header-style="header-style"
               circle_show="{{false}}"
               bindselectDate="selectDate"
+              active-colort="active-colort"
+              active-coloro="active-coloro"
     />
 </view>

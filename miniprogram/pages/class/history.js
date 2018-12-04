@@ -166,7 +166,7 @@ Page({
     let rows=this.data.rows;
     let app=getApp();
     data.forEach(r=>{
-      r.dateStr=app.date_format(r.addtime," `DAY/MM-DD` 周WW HH:II");
+      r.dateStr=app.date_format(r.addtime,"周WW HH:II");
       let min=parseInt(r.time/60);
       r.timeStr=(min>0?(min+'分'):'')+(r.time%60)+'秒';
       r.oklv=(((r.total-r.totalFail)/r.total)*100).toFixed(2)+'%'
@@ -189,6 +189,11 @@ Page({
       }
       if(r.totalFail>=5){
         r.result='B';
+      }
+      let us=this.childrens[r._openid];
+      r.us={
+        number:us.number,
+        name:us.name||us.nickname,
       }
       rows.push(r);
     })
