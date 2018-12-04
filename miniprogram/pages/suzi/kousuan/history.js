@@ -74,7 +74,7 @@ Page({
     async getHistory(){
       const db = wx.cloud.database()
       db.collection('shuzi132')
-        //.where({_openid:await app.openid()})
+        .where({_openid:await app.openid()})
         .orderBy('addtime', 'desc')
         .skip(this.offset)
         .limit(this.limit)
