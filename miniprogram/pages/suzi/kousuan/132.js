@@ -71,21 +71,17 @@ Page({
         console.log('wss.open',res)
         this.onSocketOpen=true;
         socketTask.send({
-          data:'hello'
+          data:this.data.num
         });
       })
       socketTask.onMessage(res=>{
         if(this.data.num){
-          let num=this.data.num.match(/([\d]+)([\+\-])([\d]+)/);
-          if(num){
-            let x=parseInt(num[1])+parseInt(num[3])*(num[2]=='+'?1:-1);
-            console.log('wss.msg',res.data,x)
-            if(x==res.data){
-              this.success()
-            }
+          console.log('wss.msg',res.data);
+          res=JSON.parse(res.data);
+          if(res.reply==this.data.num && res.numStr){
+            this.success()
           }
         }
-
       });
       socketTask.onClose(res=>{
         console.log('wss.close',res)
@@ -181,6 +177,11 @@ Page({
       last:this.total-this.nums.length,
       total:this.total,
     })
+    if(this.onSocketOpen) {
+      socketTask.send({
+        data: num
+      });
+    }
   },
   passFlag:false,
   pass(){
@@ -246,9 +247,8 @@ Page({
     recorderManager.start({
       duration:1000*600,
       format:'mp3',//acc/mp3
-      sampleRate:16000,
-      encodeBitRate: 96000,
-      //sampleRate: 8000,
+      sampleRate: 16000,
+      //encodeBitRate: 16000,
       numberOfChannels: 1,
       frameSize:7,
     })
