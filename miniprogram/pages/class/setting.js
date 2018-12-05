@@ -40,8 +40,14 @@ Page({
       _openid: await app.openid()
     }).get({
       success: res => {
+        let obj=res.data[0];
+        this.form={
+          teacher:obj.teacher,
+          name:obj.name,
+          number:obj.number,
+        }
         this.setData({
-          us: res.data[0]
+          us: obj
         })
       },
       fail: err => {
