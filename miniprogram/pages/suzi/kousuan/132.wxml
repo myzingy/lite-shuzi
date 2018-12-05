@@ -15,7 +15,7 @@
     <view class="num" wx:else="">
         {{num}}
     </view>
-    <view class="tips"><text class="time">{{timeStr}}</text>{{last}}/{{total}}</view>
+    <view class="tips"><text class="time">{{timeLoadStr[time%timeLoadStr.length]}}</text>{{last}}/{{total}}</view>
     <icon class="success" wx:if="{{!gameover}}"
           type="success" size="60"
           color="green" bindtap="success"/>

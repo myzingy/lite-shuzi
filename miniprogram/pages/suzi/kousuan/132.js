@@ -17,6 +17,7 @@ Page({
       gameover:false,
       hasPlay:false,
       totalFail:0,
+      timeLoadStr:['·','··','···','····','·····'],
     },
     nums:[],
   total:0,
@@ -111,6 +112,7 @@ Page({
           this.time+=1;
           let min=parseInt(this.time/60);
           obj.timeStr=(min>0?(min+'分'):'')+(this.time%60)+'秒';
+          obj.time=this.time
           this.setData(obj)
         },1000)
       }
