@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "dependencies": {
-    "vktool": "^1.0.7"
+    "vktool": "^1.0.9"
   },
   "devDependencies": {},
   "scripts": {

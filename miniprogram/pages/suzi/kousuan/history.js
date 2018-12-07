@@ -92,7 +92,7 @@ Page({
   formatRows(data){
     let rows=this.data.rows;
     data.forEach(r=>{
-      r.dateStr=app.date_format(r.addtime," `DAY/MM-DD` 周WW HH:II");
+      r.dateStr=app.date_format(r.addtime,"`DAY||MM-DD` 周WW HH:II");
       let min=parseInt(r.time/60);
       r.timeStr=(min>0?(min+'分'):'')+(r.time%60)+'秒';
       r.oklv=(((r.total-r.totalFail)/r.total)*100).toFixed(2)+'%'
