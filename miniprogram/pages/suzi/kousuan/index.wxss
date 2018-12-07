@@ -2,14 +2,13 @@
 .checkbox{
   display: block;
   margin-bottom: 30rpx;
-  color: #0063ce;
 }
 .checkbox-label{
   padding-left: 30rpx;
-  font-weight: bold;
 }
 .tips{
   margin-bottom: 30rpx;
+  font-weight: bold;
 }
 .tips-ai{
   font-size: 24rpx;
@@ -20,4 +19,18 @@
   position: fixed;
   bottom: 10rpx;
   right: 10rpx;
+}
+.package{
+  width: 40%;
+  margin: 0 0 5% 5%;
+  border: 1rpx solid #999999;
+  border-radius: 10rpx;
+  box-shadow: 2rpx 2rpx 14rpx 6rpx rgba(231,228,228,.5);
+  padding: 2% 0 2% 2%;
+}
+.package.active{
+  background-color: #007aff;
+  color:#fefefe;
+  border: 1rpx solid #007aff;
+  box-shadow: 2rpx 2rpx 14rpx 6rpx rgba(0,122,255,.5);
 }

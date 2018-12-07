@@ -3,19 +3,54 @@
      home="pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
-<view class="page" style="margin-top: 20rpx">
-    <view class="tips">
-        10以内加减速算卡，适用小学一年级提升计算基础能力，请坚持每天训练
+<view class="page flex-ll" style="margin-top: 20rpx;flex-wrap:wrap;width: 100%;">
+    <view class="package {{type==pack.type?'active':''}}"
+          bindtap="activePack" data-type="{{pack.type}}"
+          wx:for="{{packages}}" wx:key="packages.key" wx:for-item="pack">
+        <view class="tips">
+            {{pack.title}}
+        </view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox" wx:for="{{pack.items}}">
+                <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
+                <text class="checkbox-label">{{item.label}}</text>
+            </label>
+        </checkbox-group>
+        <view class="flex-vc">
+            点击选中
+        </view>
     </view>
-    <checkbox-group bindchange="checkboxChange">
-        <label class="checkbox" wx:for="{{items}}">
-            <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
-            <text class="checkbox-label">{{item.label}}</text>
-        </label>
-    </checkbox-group>
+    <!--
+    <view class="package">
+        <view class="tips">
+            10以内加减速算卡，适用小学一年级提升计算基础能力，请坚持每天训练
+        </view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox" wx:for="{{items}}">
+                <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
+                <text class="checkbox-label">{{item.label}}</text>
+            </label>
+        </checkbox-group>
+    </view>
+    <view class="package">
+        <view class="tips">
+            10以内加减速算卡，适用小学一年级提升计算基础能力，请坚持每天训练
+        </view>
+        <checkbox-group bindchange="checkboxChange">
+            <label class="checkbox" wx:for="{{items}}">
+                <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
+                <text class="checkbox-label">{{item.label}}</text>
+            </label>
+        </checkbox-group>
+    </view>
+    -->
+
+</view>
+<view class="page">
     <view class="tips-ai">
+        <switch bindchange="switchAi"/>
         开启 “智能辅助判断”，会自动识别语音是否正确，正确将跳到下一题，错误将停留在当前题目；
-        <view style="color: #ff007a;text-decoration : underline;">虽然在努力识别，但目前识别率很低；还是需要进行家长对错判断</view>
+        <view style="color: #ff007a;text-decoration : underline;">虽然在努力识别，但目前识别率很低；还是需要家长进行对错判断</view>
     </view>
     <button type="primary" bindtap="start">开 始</button>
 </view>
