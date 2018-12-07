@@ -18,6 +18,21 @@ const packages=[
       {key: '-', label: '减法', checked: true},
     ]
   },
+  //{
+  //  type:'99xf',
+  //  title:'99 乘法表',
+  //  items:[
+  //    {key: '*', label: '小 x 大', checked: true},
+  //    {key: '*', label: '大 x 小', checked: true},
+  //  ]
+  //},
+  //{
+  //  type:'99cf',
+  //  title:'99 除法表',
+  //  items:[
+  //    {key: '/', label: '除法', checked: true},
+  //  ]
+  //},
 ];
 Page({
 
@@ -32,6 +47,8 @@ Page({
         //{key: 'AI', label: '智能辅助判断', checked: false},
       ],
       type:'10',
+      dataLength:0,
+      hideMask:true,
     },
   type:'10',
     nums:[],
@@ -110,9 +127,12 @@ Page({
   greateNums(fua=true,fus=true){
     let packs={
       10:{min:0,max:10,sub_min:0,sub_max:10,sum_min:0,sum_max:10},
-      20:{min:0,max:20,sub_min:11,sub_max:20,sum_min:11,sum_max:20}
+      20:{min:1,max:20,sub_min:11,sub_max:20,sum_min:11,sum_max:20},
+      '99xf':{min:9,max:9},
+      '99cf':{min:9,max:9},
     }
     let pack=packs[this.type];
+    console.log('pack',this.type,pack)
     let nums=[]
     for(let i=pack.min;i<=pack.max;i++){
       for(let j=pack.min;j<=pack.max;j++){
@@ -127,6 +147,10 @@ Page({
     this.nums=nums;
     console.log(this.nums,this.nums.length)
     app.cache('nums',this.nums);
+    this.setData({
+      dataLength:this.nums.length,
+      nums:this.nums,
+    })
   },
   checkboxChange(e){
     console.log(this.data.items);
@@ -148,12 +172,19 @@ Page({
   },
   activePack(e){
     let type=app.attr(e,'type');
-    if(type!=this.data.type){
+    if(type!=this.type){
+      this.type=type
       this.setData({
-        type:app.attr(e,'type')
+        type:app.attr(e,'type'),
+        packages:packages
       })
       app.cache('type',type);
     }
     this.greateNums();
+  },
+  triggerMask(){
+    this.setData({
+      hideMask:!this.data.hideMask,
+    })
   }
 })

@@ -1,10 +1,11 @@
 /* miniprogram/pages/suzi/kousuan/index.wxss */
+@import "../../../style/iconfont.wxss";
 .checkbox{
   display: block;
   margin-bottom: 30rpx;
 }
 .checkbox-label{
-  padding-left: 30rpx;
+  padding-left: 10rpx;
 }
 .tips{
   margin-bottom: 30rpx;
@@ -33,4 +34,25 @@
   color:#fefefe;
   border: 1rpx solid #007aff;
   box-shadow: 2rpx 2rpx 14rpx 6rpx rgba(0,122,255,.5);
+}
+.mask{
+  position: fixed;
+  width: 100%;
+  top:0;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.5);
+}
+.mask-nums{
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+  background-color: #ffffff;
+  max-height: 1000rpx;
+  overflow-y: auto;
+}
+.nums-item{
+  width: 100rpx;
+  margin: 10rpx;
+  border-bottom: 1rpx solid #007aff;
+  text-align: center;
 }
