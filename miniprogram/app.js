@@ -1,7 +1,9 @@
 //app.js
 import {vk,regeneratorRuntime} from 'vktool'
+import request from 'request/index'
 App({
   ...vk,
+  ...request,
   regeneratorRuntime:regeneratorRuntime,
   onLaunch: function () {
     
