@@ -21,14 +21,13 @@ exports.main = async (event, context) => {
     }).where({
       _openid:openid
     }).orderBy('addtime', 'desc').limit(200).get();
-    console.log(his);
     if(his.data.length>0){
       his.data.forEach(r=>{
         if(last_addtime==0){
           last_addtime=r.addtime;
         }
-        if(addtime<r.addtime-43200){
-          total=+1;
+        if(addtime-43200>r.addtime || addtime==0){
+          total+=1;
           addtime=r.addtime;
         }
       })
@@ -36,5 +35,5 @@ exports.main = async (event, context) => {
   }catch (e){
 
   }
-  return {total:total,last_addtime:last_addtime,openid:openid}
+  return {total:total,last_addtime:last_addtime}
 }
