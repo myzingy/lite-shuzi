@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 6,
+			"current": 8,
 			"list": [
 				{
 					"id": -1,
@@ -79,6 +79,12 @@
 					"name": "pages/me/honor",
 					"pathName": "pages/me/honor",
 					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/me/share",
+					"pathName": "pages/me/share",
+					"query": "icon=sx"
 				}
 			]
 		}
