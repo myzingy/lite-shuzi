@@ -23,7 +23,7 @@ export default {
       }else{
         let ic=honor[icon_index];
         data[ic.icon]+=1;
-        if(data[ic.icon]+1>=ic.count){
+        if(data[ic.icon]+1>ic.count){
           icon_index+=1;
         }
       }
