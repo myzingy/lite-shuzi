@@ -1,28 +1,30 @@
 <!--miniprogram/pages/me/honorView.wxml-->
-<nav hasHome
-     home="pages/suzi/kousuan/index"
-     backgroundColor="#0099FF"
-     color="#fefefe">捕获宠兽</nav>
-<view class="page">
-    <view class="thumb-top" wx:if="{{honor.hasTop}}">
-        <image mode="aspectFit"
-               src="http://shuzi132-img.vking.wang/{{honor.icon}}.{{honor.ext}}"></image>
-    </view>
-    <view class="flex-ll" style="flex-wrap:wrap">
-        <formids bindclick="viewImage" data-index="{{index}}"
-                 wx:for="{{honor.items}}" wx:key="honor.key"
-                 class="item"
-                 style="background-image:url({{item}}-honorItems);margin-right: {{index%2==0?'4%':0}};">
-            <view class="mask flex-vc" wx:if="{{honorNum[honor.icon]-1<index}}">
-                未获得
-                <view style="font-size: 34rpx;color: #fe3333;" wx:if="{{honor.icon=='long'}}">每六天口算可捕获一只</view>
-                <view style="font-size: 34rpx;color: #3e3e3e;" wx:else="">每天口算可捕获一只</view>
-            </view>
-            <view class="mask flex-vc" wx:else="" style="background: none;"></view>
-        </formids>
-    </view>
-    <view class="thumb-bottom" wx:if="{{honor.hasBottom}}">
-        <image mode="aspectFit"
-               src="http://shuzi132-img.vking.wang/{{honor.icon}}-bottom.{{honor.ext}}"></image>
+<view style="padding-bottom: 50rpx;{{honor.hasTop?('background-image: url(http://shuzi132-img.vking.wang/'+honor.icon+'.'+honor.ext+');'):''}}">
+    <nav hasHome
+         home="pages/suzi/kousuan/index"
+         backgroundColor="{{honor.hasTop?'rgba(0,0,0,0)':'#0099FF'}}"
+         color="#fefefe">捕获宠兽</nav>
+    <view class="page">
+        <view class="thumb-top" wx:if="{{honor.hasTop}}">
+            <image mode="widthFix"
+                   src="http://shuzi132-img.vking.wang/{{honor.icon}}.{{honor.ext}}"></image>
+        </view>
+        <view class="flex-ll" style="flex-wrap:wrap">
+            <formids bindclick="viewImage" data-index="{{index}}"
+                     wx:for="{{honor.items}}" wx:key="honor.key"
+                     class="item"
+                     style="background-image:url({{item}}-honorItems);margin-right: {{index%2==0?'4%':0}};">
+                <view class="mask flex-vc" wx:if="{{honorNum[honor.icon]-1<index}}">
+                    未获得
+                    <view style="font-size: 34rpx;color: #fe3333;" wx:if="{{honor.icon=='long'}}">每六天口算可捕获一只</view>
+                    <view style="font-size: 34rpx;color: #3e3e3e;" wx:else="">每天口算可捕获一只</view>
+                </view>
+                <view class="mask flex-vc" wx:else="" style="background: none;"></view>
+            </formids>
+        </view>
+        <view class="thumb-bottom" wx:if="{{honor.hasBottom}}">
+            <image mode="widthFix"
+                   src="http://shuzi132-img.vking.wang/{{honor.icon}}-bottom.{{honor.ext}}"></image>
+        </view>
     </view>
 </view>
