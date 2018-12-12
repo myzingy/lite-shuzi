@@ -26,3 +26,9 @@
   font-weight: bold;
   width: 100%;
 }
+.thumb-top ,.thumb-bottom{
+  width: 100%;
+}
+.thumb-top image{
+  width: 100%;
+}

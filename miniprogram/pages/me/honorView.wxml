@@ -4,7 +4,10 @@
      backgroundColor="#0099FF"
      color="#fefefe">捕获宠兽</nav>
 <view class="page">
-    <view class="thumb-top"></view>
+    <view class="thumb-top" wx:if="{{honor.hasTop}}">
+        <image mode="aspectFit"
+               src="http://shuzi132-img.vking.wang/{{honor.icon}}.{{honor.ext}}"></image>
+    </view>
     <view class="flex-ll" style="flex-wrap:wrap">
         <formids bindclick="viewImage" data-index="{{index}}"
                  wx:for="{{honor.items}}" wx:key="honor.key"
@@ -18,5 +21,8 @@
             <view class="mask flex-vc" wx:else="" style="background: none;"></view>
         </formids>
     </view>
-    <view class="thumb-bottom"></view>
+    <view class="thumb-bottom" wx:if="{{honor.hasBottom}}">
+        <image mode="aspectFit"
+               src="http://shuzi132-img.vking.wang/{{honor.icon}}-bottom.{{honor.ext}}"></image>
+    </view>
 </view>
