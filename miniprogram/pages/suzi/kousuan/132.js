@@ -240,7 +240,7 @@ Page({
         art:this.art,
       }
     })
-    //app.cloudHisCount({},'clear');
+    app.cloudHisCount({},'clear');
   },
   back(){
     wx.navigateBack();

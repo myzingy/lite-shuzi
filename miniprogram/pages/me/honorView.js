@@ -68,6 +68,7 @@ Page({
     let index=app.attr(e,'index');
     let items=this.data.honor.items;
     let urls=items.slice(0,this.data.honorNum[this.data.honor.icon])
+    if(urls.length<1 || urls.length-1<index) return;
     console.log(urls);
     wx.previewImage({
       current: urls[index],

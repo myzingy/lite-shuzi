@@ -9,6 +9,7 @@
             <image mode="widthFix"
                    src="http://shuzi132-img.vking.wang/{{honor.icon}}.{{honor.ext}}"></image>
         </view>
+        <view wx:if="{{honor.info}}" class="info">{{honor.info}}</view>
         <view class="flex-ll" style="flex-wrap:wrap">
             <formids bindclick="viewImage" data-index="{{index}}"
                      wx:for="{{honor.items}}" wx:key="honor.key"

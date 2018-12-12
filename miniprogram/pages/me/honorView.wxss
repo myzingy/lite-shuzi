@@ -32,3 +32,8 @@
 .thumb-top image,.thumb-bottom image{
   width: 100%;
 }
+.info{
+  background-color: rgba(0,0,0,0.9);
+  color:#fefefe;
+  padding: 10rpx;
+}
