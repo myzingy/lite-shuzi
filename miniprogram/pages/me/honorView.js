@@ -1,18 +1,29 @@
 // miniprogram/pages/me/honorView.js
+const app = getApp()
+const {regeneratorRuntime} = app
+import ho from '../../components/honor';
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-
+      honor:[],
+      honorNum:{},
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+      let honor=ho.getHonorItems(options.icon);
+      app.cloudHisCount().then(res=>{
+        let honorNum=ho.formatNum(res.total);
+        this.setData({
+          honor:honor,
+          honorNum:honorNum,
+        })
+      })
     },
 
     /**
@@ -44,23 +55,19 @@ Page({
     },
 
     /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
      * 用户点击右上角分享
      */
     onShareAppMessage: function () {
 
-    }
+    },
+  viewImage(e){
+    let index=app.attr(e,'index');
+    let items=this.data.honor.items;
+    let urls=items.slice(0,this.data.honorNum[this.data.honor.icon])
+    console.log(urls);
+    wx.previewImage({
+      current: urls[index],
+      urls: urls
+    })
+  }
 })

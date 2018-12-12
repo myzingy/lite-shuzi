@@ -29,5 +29,19 @@ export default {
       }
     }
     return data;
-  }
+  },
+  getHonorItems($icon){
+    let ho={};
+    for(let i=0; i<honor.length;i++){
+      if(honor[i].icon==$icon){
+        ho=honor[i];
+        ho.items=[];
+        for(let j=1;j<=ho.count;j++){
+          ho.items.push('http://shuzi132-img.vking.wang/'+ho.icon+'%20%28'+j+'%29.'+ho.ext);
+        }
+        break;
+      }
+    }
+    return ho;
+  },
 }

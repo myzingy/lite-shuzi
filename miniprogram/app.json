@@ -7,7 +7,6 @@
         "pages/class/setting",
         "pages/class/history",
         "pages/me/honor",
-        "pages/me/honorView.js",
         "pages/me/honorView"
     ],
     "window": {

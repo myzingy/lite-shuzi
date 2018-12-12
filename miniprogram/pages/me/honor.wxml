@@ -5,7 +5,8 @@
      color="#fefefe">捕获宠兽</nav>
 <view class="page">
     <view class="flex-ll" style="flex-wrap:wrap">
-        <view wx:for="{{honor}}" wx:key="honor.key"
+        <formids url="./honorView?icon={{item.icon}}"
+                wx:for="{{honor}}" wx:key="honor.key"
               class="item"
               style="background-image:url(http://shuzi132-img.vking.wang/{{item.thumb}})">
             <view class="mask flex-vc" wx:if="{{honorNum[item.icon]<1}}">
@@ -13,7 +14,8 @@
                 <view style="font-size: 34rpx;color: #fe3333;" wx:if="{{index==4}}">每六天口算可捕获一只</view>
                 <view style="font-size: 34rpx;color: #3e3e3e;" wx:else="">每天口算可捕获一只</view>
             </view>
+            <view class="mask flex-vc" wx:else="" style="background: none;"></view>
             <view class="title">{{item.title}} ({{honorNum[item.icon]>0?(honorNum[item.icon]+'/'):''}}{{item.count}})只</view>
-        </view>
+        </formids>
     </view>
 </view>
