@@ -28,6 +28,7 @@ Page({
   onSocketOpen:false,
   hasAI:false,
   art:'',
+  type:'',
     /**
      * 生命周期函数--监听页面加载
      */
@@ -35,6 +36,7 @@ Page({
       console.log('options',options)
       this.hasAI=options.hasAI;
       this.art=options.art;
+      this.type=options.type;
       this.initRM();
       this.wssInit();
       wx.setKeepScreenOn({
@@ -226,7 +228,7 @@ Page({
     const db = wx.cloud.database()
     db.collection('shuzi132').add({
       data: {
-        type:'132',
+        type:this.type,
         addtime: parseInt(new Date()/1000),
         total:this.total,
         totalFail:this.totalFail,
@@ -234,6 +236,7 @@ Page({
         art:this.art,
       }
     })
+    //app.cloudHisCount({},'clear');
   },
   back(){
     wx.navigateBack();

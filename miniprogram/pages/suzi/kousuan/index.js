@@ -66,6 +66,7 @@ Page({
         })
       }catch (e){}
       this.greateNums();
+      app.cloudHisCount()
     },
 
     /**
@@ -121,12 +122,13 @@ Page({
         return app.toast('加减必须选一种');
       }
       wx.navigateTo({
-        url:'./132?hasAI='+(this.hasAI?1:'')+'&art='+this.art
+        url:'./132?hasAI='+(this.hasAI?1:'')+'&art='+this.art+'&type='+this.type
       });
     },
   greateNums(fua=true,fus=true){
     let packs={
       10:{min:0,max:10,sub_min:0,sub_max:10,sum_min:0,sum_max:10},
+      10:{min:0,max:1,sub_min:0,sub_max:1,sum_min:0,sum_max:1},
       20:{min:1,max:20,sub_min:11,sub_max:20,sum_min:11,sum_max:20},
       '99xf':{min:9,max:9},
       '99cf':{min:9,max:9},
