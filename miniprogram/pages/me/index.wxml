@@ -58,7 +58,25 @@
     <view class="text">进入班级</view>
     </formids>
   </view>
-
+  <formids
+          url="/pages/me/honor"
+          open-type="navigate"
+          style="width: 100%; ">
+    <view class="uploader uploader-honor">
+      <view class="uploader-view flex-lr">
+        <view class="item">
+          <view class="flex-lr title">
+            <view>捕获宠兽</view>
+            <view></view>
+          </view>
+          <view class="info">
+            坚持每天口算，可捕获宠兽
+          </view>
+        </view>
+        <view class="iconfont icon-gt"></view>
+      </view>
+    </view>
+  </formids>
 
 </view>
 <navbar></navbar>

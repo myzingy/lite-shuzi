@@ -85,3 +85,9 @@ page {
   margin: 30rpx;
   text-align: center;
 }
+.uploader-honor{
+  background-image: url("http://shuzi132-img.vking.wang/long.jpg-honorItems");
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: right;
+}
