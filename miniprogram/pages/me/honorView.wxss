@@ -29,6 +29,6 @@
 .thumb-top ,.thumb-bottom{
   width: 100%;
 }
-.thumb-top image{
+.thumb-top image,.thumb-bottom image{
   width: 100%;
 }
