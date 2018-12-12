@@ -30,7 +30,7 @@
 			"list": []
 		},
 		"miniprogram": {
-			"current": 5,
+			"current": 7,
 			"list": [
 				{
 					"id": -1,
@@ -65,7 +65,19 @@
 				{
 					"id": -1,
 					"name": "pages/class/history",
-					"pathName": "pages/class/history"
+					"pathName": "pages/class/history",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/me/honorView",
+					"pathName": "pages/me/honorView",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "pages/me/honor",
+					"pathName": "pages/me/honor"
 				}
 			]
 		}

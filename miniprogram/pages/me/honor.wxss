@@ -1,0 +1,28 @@
+/* miniprogram/pages/me/honor.wxss */
+.item{
+  width: 100%;
+  box-shadow:0 0 8px #ccc;
+  height: 300rpx;
+  background-size: 100%;
+  position: relative;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+.mask{
+  height: 300rpx;
+  width: 100%;
+  background-color: rgba(120,255,255,0.7);
+  font-size: 60rpx;
+  color: #0063ce;
+}
+.title{
+  position: absolute;
+  bottom: 0;
+  background-color: rgba(0,0,0,0.7);
+  height: 60rpx;
+  line-height: 60rpx;
+  font-size: 50rpx;
+  color:#fefefe;
+  font-weight: bold;
+  width: 100%;
+}
