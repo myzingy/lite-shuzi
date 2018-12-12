@@ -13,6 +13,7 @@
 	"appid": "wx3fd77437e8ec5d44",
 	"projectname": "suzi",
 	"libVersion": "2.4.1",
+	"compileType": "miniprogram",
 	"condition": {
 		"search": {
 			"current": -1,

@@ -37,6 +37,9 @@ App({
   },
   onHide(){
     this.cache_clear()
+    wx.redirectTo({
+      url:'/pages/suzi/kousuan/index'
+    })
   },
   async login(){
     try{

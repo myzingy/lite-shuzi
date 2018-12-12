@@ -12,33 +12,32 @@ Page({
       drawing: [
         {
           type: 'image',
-          url: 'http://shuzi132-img.vking.wang/sx%20%281%29.png',
+          url: 'http://shuzi132-img.vking.wang/share.950.png',
           left: 0,
           top: 0,
           width: 950,
           height: 650
         },
         {
+          type: 'image',
+          url: 'http://shuzi132-img.vking.wang/sx%20%281%29.png',
+          left: 23,
+          top: 24,
+          width: 464,
+          height: 255
+        },
+        {
           type: 'text',
           textType: 'CN',
           content: '此处是文本信息',
           fontSize: 26,
-          color: 'blue',
+          color: '#fefefe',
           textAlign: 'left',
-          left: 26,
-          top: 26,
-          width: 950,
+          left: 550,
+          top: 120,
+          width: 423,
           bold:true,
-        },
-        {
-          type: 'image',
-          url: 'http://shuzi132-img.vking.wang/qrcode.png',
-          left: 800,
-          top: 500,
-          width: 150,
-          height: 150,
-          circle:true,
-        },
+        }
       ],
     },
 

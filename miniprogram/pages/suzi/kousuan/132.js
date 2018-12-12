@@ -2,7 +2,74 @@
 const app = getApp()
 const {regeneratorRuntime} = app
 const recorderManager = wx.getRecorderManager();
+import ho from '../../../components/honor';
 let socketTask;
+const drawing=[
+  {
+    type: 'image',
+    url: 'http://shuzi132-img.vking.wang/share.950.png',
+    left: 0,
+    top: 0,
+    width: 950,
+    height: 650
+  },
+  {
+    type: 'image',
+    url: 'http://shuzi132-img.vking.wang/sx%20%281%29.png-thumbShare',
+    left: 23,
+    top: 24,
+    width: 464,
+    height: 255
+  },
+  {
+    type: 'text',
+    textType: 'CN',
+    content: '题型：',
+    fontSize: 30,
+    color: '#fefefe',
+    textAlign: 'left',
+    left: 550,
+    top: 120,
+    width: 423,
+    bold:true,
+  },
+  {
+    type: 'text',
+    textType: 'CN',
+    content: '题数：',
+    fontSize: 30,
+    color: '#fefefe',
+    textAlign: 'left',
+    left: 550,
+    top: 170,
+    width: 423,
+    bold:true,
+  },
+  {
+    type: 'text',
+    textType: 'CN',
+    content: '出错：',
+    fontSize: 30,
+    color: '#fefefe',
+    textAlign: 'left',
+    left: 550,
+    top: 220,
+    width: 423,
+    bold:true,
+  },
+  {
+    type: 'text',
+    textType: 'CN',
+    content: '综合得分：',
+    fontSize: 50,
+    color: '#fe3333',
+    textAlign: 'left',
+    left: 580,
+    top: 350,
+    width: 423,
+    bold:true,
+  }
+];
 Page({
 
     /**
@@ -18,6 +85,8 @@ Page({
       hasPlay:false,
       totalFail:0,
       timeLoadStr:['·','··','···','····','·····'],
+      drawing:drawing,
+      posterLoading:true,
     },
     nums:[],
   total:0,
@@ -49,7 +118,13 @@ Page({
       this.getNum()
     },
   onReady(){
-
+    app.cloudHisCount().then(res=>{
+      let img=ho.getNextImage(res);
+      console.log(res,img);
+      this.setData({
+        [`drawing[1].url`]:img+'-thumbShare',
+      })
+    })
   },
   async wssInit(){
     if(!this.hasAI) return;
@@ -131,9 +206,6 @@ Page({
       if(this.onSocketOpen){
         socketTask.close()
       }
-      wx.redirectTo({
-        url:'./index'
-      })
     },
 
     /**
@@ -207,7 +279,11 @@ Page({
       this.setIntervalTime=null;
       this.setData({
         gameover:true,
-        totalFail:this.totalFail
+        totalFail:this.totalFail,
+        [`drawing[2].content`]:'题 型：'+this.type+' '+this.art,
+        [`drawing[3].content`]:'题 数：'+this.total,
+        [`drawing[4].content`]:this.totalFail>0?('出 错：'+this.totalFail):'非常棒！全部正确',
+        [`drawing[5].content`]:'用时，'+this.data.timeStr,
       })
       this.saveScore();
       return;
@@ -299,5 +375,10 @@ Page({
       console.log('recorder onFrameRecorded',res)
       //recorderManager.stop()
     });
+  },
+  completed(){
+    this.setData({
+      posterLoading:false,
+    })
   }
 })

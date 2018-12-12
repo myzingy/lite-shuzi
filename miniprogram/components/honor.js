@@ -1,6 +1,7 @@
 /**
  * Created by goto9 on 2018/12/12.
  */
+import {vk} from 'vktool'
 const honor=[
   {icon:'sx',count:12,ext:'png',hasTop:true,hasBottom:true,title:'生肖宠兽',thumb:'sx.png',info:'十二生肖，又叫属相，是中国与十二地支相配以人出生年份的十二种动物，包括鼠、牛、虎、兔、龙、蛇、马、羊、猴、鸡、狗、猪'},
   {icon:'nsj',count:11,ext:'png',title:'南山宠兽',thumb:'nsj%20%281%29.png',info:'山海经--南山经'},
@@ -11,8 +12,8 @@ const honor=[
 ]
 export default {
   honor:honor,
-  formatNum($num){
-    let data={}
+  formatNum($num,hasGetIcon=false){
+    let data={},icon='';
     honor.forEach(h=>{
       data[h.icon]=0;
     });
@@ -21,15 +22,23 @@ export default {
       //if(i%6==0){
       if(i%7==0){
         data['long']+=1;
+        icon='long';
       }else{
         let ic=honor[icon_index];
         data[ic.icon]+=1;
+        icon=ic.icon;
         if(data[ic.icon]+1>ic.count){
           icon_index+=1;
         }
       }
     }
+    if(hasGetIcon){
+      return {data:data,icon:icon}
+    }
     return data;
+  },
+  getHonorIcon($num){
+    return this.formatNum($num,true);
   },
   getHonorItems($icon){
     let ho={};
@@ -45,4 +54,18 @@ export default {
     }
     return ho;
   },
+  /**
+   * @param obj.total,obj.last_addtime
+   */
+  getNextImage(obj){
+    let last=vk.date_format(obj.last_addtime,"YYYYMMDD");
+    let now=vk.date_format(vk.time(),"YYYYMMDD");
+    if(last!=now){
+      obj.total+=1;
+    }
+    let hi=this.getHonorIcon(obj.total);
+    let ho=this.getHonorItems(hi.icon);
+    console.log(hi,hi.data[ho.icon])
+    return 'http://shuzi132-img.vking.wang/'+ho.icon+'%20%28'+(parseInt(hi.data[ho.icon])+1)+'%29.'+ho.ext
+  }
 }
