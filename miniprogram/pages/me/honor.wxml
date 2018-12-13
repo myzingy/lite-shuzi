@@ -11,7 +11,7 @@
               style="background-image:url(http://shuzi132-img.vking.wang/{{item.thumb}})">
             <view class="mask flex-vc" wx:if="{{honorNum[item.icon]<1}}">
                 未获得
-                <view style="font-size: 34rpx;color: #fe3333;" wx:if="{{index==4}}">每六天口算可捕获一只</view>
+                <view style="font-size: 34rpx;color: #fe3333;" wx:if="{{index==4}}">每周坚持口算可捕获一只</view>
                 <view style="font-size: 34rpx;color: #3e3e3e;" wx:else="">每天口算可捕获一只</view>
             </view>
             <view class="mask flex-vc" wx:else="" style="background: none;"></view>
