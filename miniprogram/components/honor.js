@@ -65,7 +65,7 @@ export default {
     }
     let hi=this.getHonorIcon(obj.total);
     let ho=this.getHonorItems(hi.icon);
-    console.log(hi,hi.data[ho.icon])
-    return 'http://shuzi132-img.vking.wang/'+ho.icon+'%20%28'+(parseInt(hi.data[ho.icon])+1)+'%29.'+ho.ext
+    console.log(hi,hi.data[ho.icon],obj)
+    return 'http://shuzi132-img.vking.wang/'+ho.icon+'%20%28'+(parseInt(hi.data[ho.icon]))+'%29.'+ho.ext
   }
 }

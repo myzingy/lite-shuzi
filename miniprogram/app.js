@@ -37,9 +37,14 @@ App({
   },
   onHide(){
     this.cache_clear()
-    wx.redirectTo({
-      url:'/pages/suzi/kousuan/index'
-    })
+    let pages=getCurrentPages();
+    let cur='/'+pages[pages.length-1].route;
+    if(cur=='/pages/suzi/kousuan/132'){
+      wx.redirectTo({
+        url:'/pages/suzi/kousuan/index'
+      })
+    }
+
   },
   async login(){
     try{

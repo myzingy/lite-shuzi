@@ -4,19 +4,19 @@
 const def=[
   {
     type: 'image',
-    url: 'http://shuzi132-img.vking.wang/share.950.png',
+    url: 'http://shuzi132-img.vking.wang/share.950.jpg',
     left: 0,
     top: 0,
-    width: 950,
-    height: 650
+    width: 650,
+    height: 445
   },
   {
     type: 'image',
     url: 'http://shuzi132-img.vking.wang/sx%20%281%29.png-thumbShare',
-    left: 23,
-    top: 24,
-    width: 464,
-    height: 255
+    left: 16,
+    top: 16,
+    width: 317,
+    height: 174
   },
   {
     type: 'text',
@@ -25,9 +25,9 @@ const def=[
     fontSize: 30,
     color: '#fefefe',
     textAlign: 'left',
-    left: 550,
-    top: 120,
-    width: 423,
+    left: 377,
+    top: 70,
+    width: 290,
     bold:true,
   },
   {
@@ -37,9 +37,9 @@ const def=[
     fontSize: 30,
     color: '#fefefe',
     textAlign: 'left',
-    left: 550,
-    top: 170,
-    width: 423,
+    left: 377,
+    top: 110,
+    width: 290,
     bold:true,
   },
   {
@@ -49,28 +49,40 @@ const def=[
     fontSize: 30,
     color: '#fefefe',
     textAlign: 'left',
-    left: 550,
-    top: 220,
-    width: 423,
+    left: 377,
+    top: 150,
+    width: 290,
     bold:true,
   },
   {
     type: 'text',
     textType: 'CN',
     content: '综合得分：',
-    fontSize: 50,
+    fontSize: 40,
     color: '#fe3333',
     textAlign: 'left',
-    left: 580,
-    top: 350,
-    width: 423,
+    left: 377,
+    top: 230,
+    width: 290,
     bold:true,
   }
 ];
-const share={def:def}
+let simple=JSON.parse(JSON.stringify(def));
+simple[0].url='http://shuzi132-img.vking.wang/share-simple.950.jpg';
+simple[1].left=23;
+simple[1].top=131;
+const share={
+  def:def,
+  simple:simple,
+}
 
 module.exports={
-  getShare(key='def'){
+  getShare(key=''){
+    if(!key){
+      let ks=Object.keys(share);
+      let ki=parseInt(new Date()/1000)%ks.length;
+      key=ks[ki]
+    }
     return share[key]||share.def;
   },
 }

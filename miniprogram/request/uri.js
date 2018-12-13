@@ -28,6 +28,6 @@ export default {
     alias:'wx.cloud.callFunction', //必须
     apiName:'conf',      //必须
     loading:false,       //loading效果 ，
-    cachetime:86400,        //缓存 0无
+    cachetime:600,        //缓存 0无
   },
 }

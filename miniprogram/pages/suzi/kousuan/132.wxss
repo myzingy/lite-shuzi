@@ -9,10 +9,7 @@ page{
   position: relative;
   white-space:nowrap;
 }
-.num-gameover{
-    font-size: 100rpx;
-    color:red;
-}
+
 .tips{
   position: absolute;
   top: 0;
@@ -51,26 +48,35 @@ padding-right:40rpx;
   transform:rotate(90deg);
   position: absolute;
     right: 20rpx;
-    top: 20rpx;
+    bottom: 20rpx;
 }
 
 /* 画布样式 */
 .canvas-style{
-    width: 950rpx !important;
-    height: 650rpx  !important;
+    width: 650rpx !important;
+    height: 445rpx  !important;
     margin: 0 auto;
     box-shadow:0 0 8px #ccc;
     margin-top: 1rpx;
 }
 .savebtn-style{
-    margin-top: 10rpx !important;
 }
 .poster_view{
     background-color: rgba(0,0,0,0.8);
     position: fixed;
-    top:0;
+    top:200rpx;
     left:0;
+    right: 0;
+    height: 650rpx;
+}
+.num-gameover{
+    font-size: 50rpx;
+    color:#007aff;
+    background-color: #fefefe;
+    position: fixed;
+    top:0;
+    left: 0;
     bottom: 0;
     right: 0;
-    color: #007aff;
+    padding-top: 200rpx;
 }

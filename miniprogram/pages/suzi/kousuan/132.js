@@ -221,7 +221,7 @@ Page({
         [`drawing[2].content`]:'题 型：'+this.type+' '+this.art,
         [`drawing[3].content`]:'题 数：'+this.total,
         [`drawing[4].content`]:this.totalFail>0?('出 错：'+this.totalFail):'非常棒！全部正确',
-        [`drawing[5].content`]:'用时，'+this.data.timeStr,
+        [`drawing[5].content`]:'用时'+this.data.timeStr,
       })
       this.saveScore();
       return;
