@@ -9,19 +9,10 @@
  * - 经过微信鉴权直接可信的用户唯一标识 openid
  *
  */
+const share = require('./share')
 exports.main = async (event, context) => {
   var data={
-    share:{
-      bgimg:'http://shuzi132-img.vking.wang/share.950.png',
-      box:{
-        type: 'image',
-        url: 'http://shuzi132-img.vking.wang/sx%20%281%29.png-thumbShare',
-        left: 23,
-        top: 24,
-        width: 464,
-        height: 255
-      }
-    },
+    share:share.getShare(),
   };
   return data;
 }
