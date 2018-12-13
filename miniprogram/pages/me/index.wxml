@@ -77,6 +77,17 @@
       </view>
     </view>
   </formids>
-
+  <button open-type="feedback" class="uploader button-none" style="height: 100rpx">
+    <view class="uploader-view flex-lr">
+      意见反馈
+      <view class="iconfont icon-gt"></view>
+    </view>
+  </button>
+  <button open-type="openSetting" class="uploader button-none" style="height: 100rpx;margin-top: 20rpx;">
+    <view class="uploader-view flex-lr">
+      系统设置
+      <view class="iconfont icon-gt"></view>
+    </view>
+  </button>
 </view>
 <navbar></navbar>

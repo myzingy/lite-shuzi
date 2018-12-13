@@ -116,3 +116,19 @@ page{
   display: -webkit-flex;
   justify-content:flex-end;
 }
+.button-none {
+  display: inline-block;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  font-size: inherit;
+  text-align: center;
+  text-decoration: none;
+  line-height: inherit;
+  -webkit-tap-highlight-color: transparent;
+  color: inherit;
+  width:100%;
+  border-radius: 0;
+  background-color: transparent;
+  overflow: visible;
+}
