@@ -12,6 +12,16 @@
 const cloud = require('wx-server-sdk')
 cloud.init()
 const db = cloud.database()
+function date_format(ns) {
+  var result='YYYYMMDD';
+  var time = new Date(ns*1000);
+  result=result.replace('YYYY',time.getFullYear());
+  var m=time.getMonth()+1;
+  result=result.replace('MM',m>9?m:"0"+m);
+  var d=time.getDate();
+  result=result.replace('DD',d>9?d:'0'+d);
+  return result;
+}
 exports.main = async (event, context) => {
   var openid=event.userInfo.openId;
   var total=0,last_addtime=0,addtime=0;
@@ -26,7 +36,10 @@ exports.main = async (event, context) => {
         if(last_addtime==0){
           last_addtime=r.addtime;
         }
-        if(addtime-43200>r.addtime || addtime==0){
+        let date1=date_format(addtime);
+        let date2=date_format(r.addtime)
+        console.log('date1,date2',date1,date2)
+        if(date1!=date2){
           total+=1;
           addtime=r.addtime;
         }
