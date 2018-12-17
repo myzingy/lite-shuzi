@@ -1,6 +1,6 @@
 <!--index.wxml-->
 <nav hasHome
-     home="pages/suzi/kousuan/index"
+     home="/pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
 <view class="container">

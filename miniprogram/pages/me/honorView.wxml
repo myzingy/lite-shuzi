@@ -1,7 +1,7 @@
 <!--miniprogram/pages/me/honorView.wxml-->
 <view style="padding-bottom: 50rpx;{{honor.hasTop?('background-image: url(http://shuzi132-img.vking.wang/'+honor.icon+'.'+honor.ext+');'):''}}">
     <nav hasHome
-         home="pages/suzi/kousuan/index"
+         home="/pages/suzi/kousuan/index"
          backgroundColor="{{honor.hasTop?'rgba(0,0,0,0)':'#0099FF'}}"
          color="#fefefe">捕获宠兽</nav>
     <view class="page">

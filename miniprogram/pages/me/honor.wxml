@@ -1,6 +1,6 @@
 <!--miniprogram/pages/me/honor.wxml-->
 <nav hasHome
-     home="pages/suzi/kousuan/index"
+     home="/pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">捕获宠兽</nav>
 <view class="page">
