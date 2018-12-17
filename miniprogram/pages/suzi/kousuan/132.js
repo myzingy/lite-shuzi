@@ -174,10 +174,11 @@ Page({
      * 用户点击右上角分享
      */
     onShareAppMessage: async function () {
+      let fromid=await app.openid()
       return {
-        title: '口算132',
-        path: '/pages/suzi/kousuan/index?fromid='+await app.openid(),
-        //imageUrl:'',
+        title: '口算132 小学口算训练卡',
+        path: '/pages/suzi/kousuan/index?fromid='+fromid,
+        imageUrl:'http://shuzi132-img.vking.wang/share-msg.jpg',
       }
     },
   getNum(success=true){

@@ -68,8 +68,13 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: function () {
-
+    onShareAppMessage: async function () {
+      let fromid=await app.openid()
+      return {
+        title: '口算132 小学口算训练卡',
+        path: '/pages/suzi/kousuan/index?fromid='+fromid,
+        imageUrl:'http://shuzi132-img.vking.wang/share-msg.jpg',
+      }
     },
     async getHistory(){
       const db = wx.cloud.database()
