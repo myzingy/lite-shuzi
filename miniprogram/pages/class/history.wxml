@@ -13,7 +13,7 @@
             <viev>（{{item.us.number}}）{{item.us.name}}，{{item.dateStr}}</viev>
         </view>
         <viev class="flex-vc art" wx:if="{{item.art}}">
-            场景：{{item.art}}
+            场景：{{item.type}} {{item.art}}
         </viev>
         <view class="content">
             <view class="row flex-lr">
