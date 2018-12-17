@@ -32,6 +32,7 @@ Page({
   hasAI:false,
   art:'',
   type:'',
+  openid:'',
     /**
      * 生命周期函数--监听页面加载
      */
@@ -50,6 +51,7 @@ Page({
       this.nums=shuffle(nums);
       this.total=this.nums.length;
       this.getNum()
+      this.openid=await app.openid();
     },
   onReady(){
     app.cloudConf().then(conf=>{
@@ -173,12 +175,17 @@ Page({
     /**
      * 用户点击右上角分享
      */
-    onShareAppMessage: async function () {
-      let fromid=await app.openid()
+    onShareAppMessage: function () {
       return {
         title: '口算132 小学口算训练卡',
-        path: '/pages/suzi/kousuan/index?fromid='+fromid,
+        path: '/pages/suzi/kousuan/index?fromid='+this.openid||'',
         imageUrl:'http://shuzi132-img.vking.wang/share-msg.jpg',
+        success: (res) => {
+          console.log("转发成功", res);
+        },
+        fail: (res) => {
+          console.log("转发失败", res);
+        }
       }
     },
   getNum(success=true){
