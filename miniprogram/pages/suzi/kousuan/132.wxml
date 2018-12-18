@@ -14,7 +14,7 @@
     <view class="mask-start flex-vc" bindtap="start" wx:if="{{!hasPlay}}">
         <view class="flex-cc start">
             <icon type="info" size="60" color="red" />
-            <view>开 始</view>
+            <view>{{last>1?'继 续':'开 始'}}</view>
         </view>
     </view>
 </view>

@@ -137,14 +137,20 @@ Page({
      * 生命周期函数--监听页面隐藏
      */
     onHide: function () {
-      if(this.setIntervalTime){
-        clearInterval(this.setIntervalTime);
-      }
-      this.setIntervalTime=null;
-      this.time=0;
-      recorderManager.stop();
-      if(this.onSocketOpen){
-        socketTask.close()
+      if(this.nums.length==0) {//答题完毕
+        if (this.setIntervalTime) {
+          clearInterval(this.setIntervalTime);
+        }
+        this.setIntervalTime = null;
+        this.time = 0;
+        recorderManager.stop();
+        if (this.onSocketOpen) {
+          socketTask.close()
+        }
+      }else{
+        this.setData({
+          hasPlay:false,
+        })
       }
     },
 
