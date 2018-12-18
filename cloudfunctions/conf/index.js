@@ -10,9 +10,11 @@
  *
  */
 const share = require('./share')
+const packages = require('./packages')
 exports.main = async (event, context) => {
   var data={
     share:share.getShare(),
+    packages:packages.init()
   };
   return data;
 }

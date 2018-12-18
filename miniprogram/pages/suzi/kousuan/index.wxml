@@ -9,7 +9,7 @@
 </view>
 <view class="page flex-ll" style="margin-top: 20rpx;flex-wrap:wrap;width: 100%;">
     <view class="package {{type==pack.type?'active':''}}"
-          bindtap="activePack" data-type="{{pack.type}}"
+          bindtap="activePack" data-type="{{pack.type}}" data-index="{{index}}"
           wx:for="{{packages}}" wx:key="packages.key" wx:for-item="pack">
         <view class="tips">
             {{pack.title}}

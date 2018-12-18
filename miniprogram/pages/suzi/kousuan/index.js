@@ -1,46 +1,13 @@
 // miniprogram/pages/suzi/kousuan/index.js
 const app = getApp()
 const {regeneratorRuntime} = app
-const packages=[
-  {
-    type:'10',
-    title:'10 以内加减法',
-    items:[
-      {key: '+', label: '加法', checked: true},
-      {key: '-', label: '减法', checked: true},
-    ]
-  },
-  {
-    type:'20',
-    title:'20 以内加减法',
-    items:[
-      {key: '+', label: '加法', checked: true},
-      {key: '-', label: '减法', checked: true},
-    ]
-  },
-  //{
-  //  type:'99xf',
-  //  title:'99 乘法表',
-  //  items:[
-  //    {key: '*', label: '小 x 大', checked: true},
-  //    {key: '*', label: '大 x 小', checked: true},
-  //  ]
-  //},
-  //{
-  //  type:'99cf',
-  //  title:'99 除法表',
-  //  items:[
-  //    {key: '/', label: '除法', checked: true},
-  //  ]
-  //},
-];
 Page({
 
     /**
      * 页面的初始数据
      */
     data: {
-      packages:packages,
+      packages:[],
       items: [
         {key: '+', label: '加法', checked: true},
         {key: '-', label: '减法', checked: true},
@@ -51,8 +18,10 @@ Page({
       hideMask:true,
     },
   type:'10',
+  type_index:0,
     nums:[],
   hasAI:false,
+  packages:[],
   art:'+,-',
     /**
      * 生命周期函数--监听页面加载
@@ -61,12 +30,19 @@ Page({
       this.type='10';
       try{
         this.type=await app.cache('type');
+        this.type_index=await app.cache('type_index');
         this.setData({
           type:this.type,
         })
       }catch (e){}
-      this.greateNums();
-      app.cloudHisCount()
+      app.cloudHisCount();
+      app.cloudConf().then(conf=>{
+        this.packages=conf.packages
+        this.setData({
+          packages:conf.packages
+        })
+        this.greateNums();
+      })
     },
 
     /**
@@ -126,25 +102,14 @@ Page({
       });
     },
   greateNums(fua=true,fus=true){
-    let packs={
-      10:{min:0,max:10,sub_min:0,sub_max:10,sum_min:0,sum_max:10},
-      //10:{min:0,max:1,sub_min:0,sub_max:1,sum_min:0,sum_max:1},
-      20:{min:1,max:20,sub_min:11,sub_max:20,sum_min:11,sum_max:20},
-      '99xf':{min:9,max:9},
-      '99cf':{min:9,max:9},
-    }
-    let pack=packs[this.type];
-    console.log('pack',this.type,pack)
+    let pack=this.packages[this.type_index];
+    console.log('pack',this.type,this.type_index,pack)
     let nums=[]
-    for(let i=pack.min;i<=pack.max;i++){
-      for(let j=pack.min;j<=pack.max;j++){
-        if(i-j>=pack.sub_min && i-j<=pack.sub_max && fus){
-          nums.push(i+'-'+j);
-        }
-        if(i+j<=pack.sum_max && i+j>=pack.sum_min && fua){
-          nums.push(i+'+'+j);
-        }
-      }
+    if(fua){
+      nums=nums.concat(pack.items[0].nums);
+    }
+    if(fus){
+      nums=nums.concat(pack.items[1].nums);
     }
     this.nums=nums;
     console.log(this.nums,this.nums.length)
@@ -174,13 +139,16 @@ Page({
   },
   activePack(e){
     let type=app.attr(e,'type');
-    if(type!=this.type){
+    let type_index=app.attr(e,'index');
+    if(type_index!=this.type_index){
       this.type=type
+      this.type_index=type_index;
       this.setData({
         type:app.attr(e,'type'),
-        packages:packages
+        packages:this.packages
       })
       app.cache('type',type);
+      app.cache('type_index',type_index);
     }
     this.greateNums();
   },
