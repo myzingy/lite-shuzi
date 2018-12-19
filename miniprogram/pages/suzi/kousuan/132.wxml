@@ -18,13 +18,13 @@
         </view>
     </view>
 </view>
-<view class="num-gameover" wx:if="{{gameover}}">
+<view class="num-gameover{{vertical}}" wx:if="{{gameover}}">
     <poster
             drawing='{{drawing}}'
             savebtnText='恭喜，捕获宠兽 --- 点此保存'
 
             canvas-style='canvas-style{{vertical}}'
-            savebtn-style='savebtn-style'
+            savebtn-style='savebtn-style{{vertical}}'
             bindcompleted='completed'
     />
     <view wx:if="{{posterLoading}}"

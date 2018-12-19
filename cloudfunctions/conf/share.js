@@ -81,13 +81,14 @@ const chris=[
     type: 'text',
     textType: 'CN',
     content: 'COUNTDAY',
-    fontSize: 50,
+    fontSize: 80,
     color: '#fefe00',
-    textAlign: 'left',
-    left: 25,
-    top: 150,
-    width: 600,
+    textAlign: 'center',
+    left: 325,
+    top: 200,
+    width: 550,
     bold:true,
+    lineHeight:100,
   },
   {
     type: 'text',
@@ -96,10 +97,11 @@ const chris=[
     fontSize: 30,
     color: '#fefe00',
     textAlign: 'left',
-    left: 25,
+    left: 70,
     top: 500,
-    width: 600,
+    width: 500,
     bold:true,
+    lineHeight:40,
   },
   {
     type: 'text',
@@ -108,9 +110,9 @@ const chris=[
     fontSize: 30,
     color: '#fefe00',
     textAlign: 'right',
-    left: 25,
-    top: 600,
-    width: 600,
+    left: 570,
+    top: 780,
+    width: 500,
     bold:true,
   },
 
@@ -122,7 +124,6 @@ simple[1].top=131;
 const share={
   def:def,
   simple:simple,
-  chris:chris,
 }
 function date_format(ns) {
   var result='MMDD';
@@ -140,6 +141,7 @@ module.exports={
     let md=date_format(time);
     if(event.key=='autoday'){
       if((md>='1218' && md<='1230')){
+        share.chris=chris;
         key='chris';
       }else{
         let ks=Object.keys(share);
@@ -155,4 +157,4 @@ module.exports={
     return share[key]||share.def;
   },
 }
-//module.exports.getShare();
+//module.exports.getShare({key:'autoday'});

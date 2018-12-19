@@ -249,7 +249,7 @@ Page({
             d.content='用时'+this.data.timeStr
             break;
           case 'COUNTDAY':
-            d.content='坚持训练，第'+this.countDay+'天'
+            d.content='坚持口算训练\n第'+this.countDay+'天'
             break;
         }
       })

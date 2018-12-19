@@ -66,7 +66,10 @@ padding-right:40rpx;
   box-shadow:0 0 8px #ccc;
   margin-top: 1rpx;
 }
-.savebtn-style{
+.savebtn-style-vertical{
+  margin-top: -160rpx!important;
+  position: relative;
+  z-index: 99;
 }
 .poster_view{
     background-color: rgba(0,0,0,0.8);
@@ -76,7 +79,7 @@ padding-right:40rpx;
     right: 0;
     height: 650rpx;
 }
-.num-gameover{
+.num-gameover,.num-gameover-vertical{
     font-size: 50rpx;
     color:#007aff;
     background-color: #fefefe;
@@ -86,4 +89,7 @@ padding-right:40rpx;
     bottom: 0;
     right: 0;
     padding-top: 200rpx;
+}
+.num-gameover-vertical{
+  padding-top: 80rpx;
 }
