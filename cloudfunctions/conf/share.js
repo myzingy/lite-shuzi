@@ -71,7 +71,7 @@ const def=[
 const chris=[
   {
     type: 'image',
-    url: 'http://shuzi132-img.vking.wang/share.950.jpg',
+    url: 'http://shuzi132-img.vking.wang/chris.jpg',
     left: 0,
     top: 0,
     width: 650,
