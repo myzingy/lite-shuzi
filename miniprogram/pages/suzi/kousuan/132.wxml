@@ -23,7 +23,7 @@
             drawing='{{drawing}}'
             savebtnText='恭喜，捕获宠兽 --- 点此保存'
 
-            canvas-style='canvas-style'
+            canvas-style='canvas-style{{vertical}}'
             savebtn-style='savebtn-style'
             bindcompleted='completed'
     />

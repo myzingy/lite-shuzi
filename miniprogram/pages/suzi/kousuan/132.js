@@ -21,6 +21,7 @@ Page({
       timeLoadStr:['·','··','···','····','·····'],
       drawing:[],
       posterLoading:true,
+      vertical:'',
     },
     nums:[],
   total:0,
@@ -62,7 +63,8 @@ Page({
         let drawing=conf.share;
         drawing[1].url=img+'-thumbShare';
         this.setData({
-          drawing:drawing
+          drawing:drawing,
+          vertical:(drawing[0].height>drawing[0].width)?'-vertical':'',
         })
         this.countDay=res.total
       })
