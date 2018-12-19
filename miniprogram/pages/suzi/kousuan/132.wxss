@@ -67,9 +67,7 @@ padding-right:40rpx;
   margin-top: 1rpx;
 }
 .savebtn-style-vertical{
-  margin-top: -160rpx!important;
-  position: relative;
-  z-index: 99;
+  margin-top: 20rpx!important;
 }
 .poster_view{
     background-color: rgba(0,0,0,0.8);
@@ -78,6 +76,7 @@ padding-right:40rpx;
     left:0;
     right: 0;
     height: 650rpx;
+  overflow-y:auto;
 }
 .num-gameover,.num-gameover-vertical{
     font-size: 50rpx;
