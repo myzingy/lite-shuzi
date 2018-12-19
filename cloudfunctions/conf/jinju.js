@@ -2,7 +2,7 @@
  * Created by goto9 on 2018/12/19.
  */
 var fs = require('fs');
-module.exports=function(){
+module.exports=(function(){
   let text = fs.readFileSync('./jinju.txt','utf-8');
 
   let match=text.match(/(.*)[\r\n]+/g);
@@ -21,5 +21,5 @@ module.exports=function(){
   let ri=parseInt(Math.random()*jinju.length);
   console.log(jinju[ri]);
   return jinju[ri]
-};
-module.exports();
+})();
+//module.exports();
