@@ -33,6 +33,7 @@ Page({
   art:'',
   type:'',
   openid:'',
+  countDay:0,
     /**
      * 生命周期函数--监听页面加载
      */
@@ -63,6 +64,7 @@ Page({
         this.setData({
           drawing:drawing
         })
+        this.countDay=res.total
       })
     })
   },
@@ -229,13 +231,30 @@ Page({
     if(this.nums.length==0){//答题完毕
       clearInterval(this.setIntervalTime);
       this.setIntervalTime=null;
+      let drawing=this.data.drawing;
+      drawing.forEach(d=>{
+        switch (d.content){
+          case 'TYPE':
+            d.content='题 型：'+this.type+' '+this.art
+            break;
+          case 'TOTAL':
+            d.content='题 数：'+this.total
+            break;
+          case 'TOTALFAIL':
+            d.content=this.totalFail>0?('出 错：'+this.totalFail):'非常棒！全部正确'
+            break;
+          case 'TIMESTR':
+            d.content='用时'+this.data.timeStr
+            break;
+          case 'COUNTDAY':
+            d.content='坚持训练，第'+this.countDay+'天'
+            break;
+        }
+      })
       this.setData({
         gameover:true,
         totalFail:this.totalFail,
-        [`drawing[2].content`]:'题 型：'+this.type+' '+this.art,
-        [`drawing[3].content`]:'题 数：'+this.total,
-        [`drawing[4].content`]:this.totalFail>0?('出 错：'+this.totalFail):'非常棒！全部正确',
-        [`drawing[5].content`]:'用时'+this.data.timeStr,
+        drawing:drawing,
       })
       this.saveScore();
       return;

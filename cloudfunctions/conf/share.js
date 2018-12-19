@@ -21,7 +21,7 @@ const def=[
   {
     type: 'text',
     textType: 'CN',
-    content: '题型：',
+    content: 'TYPE',
     fontSize: 30,
     color: '#fefefe',
     textAlign: 'left',
@@ -33,7 +33,7 @@ const def=[
   {
     type: 'text',
     textType: 'CN',
-    content: '题数：',
+    content: 'TOTAL',
     fontSize: 30,
     color: '#fefefe',
     textAlign: 'left',
@@ -45,7 +45,7 @@ const def=[
   {
     type: 'text',
     textType: 'CN',
-    content: '出错：',
+    content: 'TOTALFAIL',
     fontSize: 30,
     color: '#fefefe',
     textAlign: 'left',
@@ -57,7 +57,7 @@ const def=[
   {
     type: 'text',
     textType: 'CN',
-    content: '综合得分：',
+    content: 'TIMESTR',
     fontSize: 40,
     color: '#fe3333',
     textAlign: 'left',
