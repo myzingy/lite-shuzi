@@ -56,7 +56,7 @@ Page({
       this.openid=await app.openid();
     },
   onReady(){
-    app.cloudConf().then(conf=>{
+    app.cloudConf({key:'autoday'}).then(conf=>{
       app.cloudHisCount().then(res=>{
         let img=ho.getNextImage(res);
         console.log(conf,res,img);

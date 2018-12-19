@@ -135,17 +135,21 @@ function date_format(ns) {
   return result;
 }
 module.exports={
-  getShare(key=''){
-    if(!key){
-      let time=parseInt(new Date()/1000)
-      let md=date_format(time);
-      if(md>='1218' && md<='1230'){
+  getShare(event){
+    let time=parseInt(new Date()/1000)
+    let md=date_format(time);
+    if(event.key=='autoday'){
+      if((md>='1218' && md<='1230')){
         key='chris';
       }else{
         let ks=Object.keys(share);
         let ki=time%ks.length;
         key=ks[ki]
       }
+    }else{
+      let ks=Object.keys(share);
+      let ki=time%ks.length;
+      key=ks[ki]
     }
     console.log(share[key]||share.def)
     return share[key]||share.def;
