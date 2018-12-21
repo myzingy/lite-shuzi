@@ -37,7 +37,7 @@
 <view class="page" wx:else="">
     <view class="flex-vc" >
         无任何记录
-        <view style="color:#ff3333; margin-top: 30rpx;">班主任需要填写全名，填“某老师”可能会找错班级</view>，
+        <view style="color:#ff3333; margin-top: 30rpx;">班主任需要填写全名，填“某老师”可能会找错班级</view>
     </view>
 </view>
 <view class="calendar" hidden="{{hideCalendar}}">

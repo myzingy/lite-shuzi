@@ -50,7 +50,7 @@
     -->
 
 </view>
-<view class="page">
+<view class="page" style="margin-bottom: 200rpx;">
     <view class="tips-ai">
         <switch bindchange="switchAi"/>
         开启 “AI判断”，识别语音正确将跳到下一题；

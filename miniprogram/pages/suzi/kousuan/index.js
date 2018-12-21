@@ -36,7 +36,7 @@ Page({
         })
       }catch (e){}
       app.cloudHisCount();
-      app.cloudConf().then(conf=>{
+      app.cloudConf({key:'autoday'}).then(conf=>{
         this.packages=conf.packages
         this.setData({
           packages:conf.packages
