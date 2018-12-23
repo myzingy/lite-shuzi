@@ -39,24 +39,24 @@ const packages=[
       }},
     ]
   },
-  //{
-  //  type:'20',
-  //  title:'20以内加减法',
-  //  items:[
-  //    {key: '+', label: '加法', checked: true,nums:[],roal:{
-  //      pa:1,
-  //      pb:20,
-  //      min:11,
-  //      max:20,
-  //    }},
-  //    {key: '-', label: '减法', checked: true,nums:[],roal:{
-  //      pa:1,
-  //      pb:20,
-  //      min:11,
-  //      max:20,
-  //    }},
-  //  ]
-  //},
+  {
+    type:'20以内加减法',
+    title:'20以内加减法',
+    items:[
+      {key: '+', label: '加法', checked: true,nums:[],roal:{
+        pa:1,
+        pb:20,
+        min:11,
+        max:20,
+      }},
+      {key: '-', label: '减法', checked: true,nums:[],roal:{
+        pa:1,
+        pb:20,
+        min:11,
+        max:20,
+      }},
+    ]
+  },
 ];
 
 module.exports={
@@ -82,11 +82,13 @@ module.exports={
     return nums;
   },
   init(){
+    let mp={};
     packages.forEach(p=>{
       p.items.forEach(item=>{
         item.nums=this.greateNums(p.type,item.key,item.roal)
       })
+      mp[p.type]=p;
     })
-    return packages;
+    return mp;
   },
 }
