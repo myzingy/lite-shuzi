@@ -18,7 +18,7 @@ Page({
       hideMask:true,
     },
   type:'10',
-  type_index:0,
+  type_index:'10',
     nums:[],
   hasAI:false,
   packages:[],
