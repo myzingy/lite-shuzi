@@ -21,6 +21,7 @@ Page({
       timeLoadStr:['·','··','···','····','·····'],
       drawing:[],
       posterLoading:true,
+      hasPosterShow:true,
       vertical:'',
     },
     nums:[],
@@ -292,6 +293,13 @@ Page({
     app.cloudHisCount({},'clear');
   },
   back(){
+    //console.log('this.data.posterLoading',this.data.posterLoading)
+    if(!this.data.posterLoading){
+      return this.setData({
+        hasPosterShow:false,
+        posterLoading:true,
+      })
+    }
     wx.navigateBack();
   },
 
