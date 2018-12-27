@@ -48,18 +48,18 @@
     -->
 
 </view>
-<!--
 <view class="page" style="margin-bottom: 200rpx;">
+    <!--
     <view class="tips-ai">
         <switch bindchange="switchAi"/>
         开启 “AI判断”，识别语音正确将跳到下一题；
         <view style="color: #ff007a;text-decoration : underline;">虽然在努力识别，但目前识别率低；还是需要家长进行对错判断</view>
     </view>
+    -->
     <button type="primary" bindtap="start">
         开 始
     </button>
 </view>
--->
 <navbar></navbar>
 <view class="mask" bindtap="triggerMask" hidden="{{hideMask}}">
     <view class="page flex-ll mask-nums" style="flex-wrap:wrap;">
