@@ -21,7 +21,7 @@
 <view class="num-gameover{{vertical}}" wx:if="{{gameover}}">
     <poster wx:if="{{hasPosterShow}}"
             drawing='{{drawing}}'
-            savebtnText='恭喜，捕获宠兽 --- 点此保存'
+            savebtnText='点此保存'
 
             canvas-style='canvas-style{{vertical}}'
             savebtn-style='savebtn-style{{vertical}}'
@@ -36,8 +36,7 @@
     <cover-view class="back">
         <button class="button-none"
                bindtap="back">
-            <icon type="clear" size="60"
-                  color="red" style="transform:rotate(90deg);" />
+            +
         </button>
     </cover-view>
 </view>

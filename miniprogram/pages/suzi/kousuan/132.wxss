@@ -46,8 +46,24 @@ padding-right:40rpx;
 }
 .back{
   position: absolute;
-    right: 20rpx;
+    right: 10rpx;
     bottom: 20rpx;
+
+  transform:rotate(45deg);
+  border-radius: 50%;
+  width: 120rpx;
+  height: 120rpx;
+  background-color: #ff3333;
+  color: #fefefe;
+  font-weight: bold;
+  font-size: 120rpx;
+  line-height: 120rpx;
+  text-align: center;
+  border: 10rpx solid rgba(255,255,200,0.7);
+}
+.back button{
+  margin-left: 0rpx;
+  margin-top: -10rpx;
 }
 
 /* 画布样式 */
@@ -66,7 +82,7 @@ padding-right:40rpx;
   margin-top: 1rpx;
 }
 .savebtn-style-vertical{
-  margin-top: 20rpx!important;
+  margin-top: 0rpx!important;
 }
 .poster_view{
     background-color: rgba(0,0,0,0.8);
