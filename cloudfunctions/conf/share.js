@@ -168,7 +168,7 @@ module.exports={
     let md=date_format(time);
     if(event.key=='autoday'){
       if((md<='0110' || md>='1227')){
-        chris[0].url='http://shuzi132-img.vking.wang/year20191.jpg'
+        chris[0].url='http://shuzi132-img.vking.wang/year20192.jpg'
         chris[1].content='新年快乐'
         chris[2].content='新年快乐'
         share.chris=chris;
