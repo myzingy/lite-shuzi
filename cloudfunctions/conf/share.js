@@ -167,7 +167,13 @@ module.exports={
     let time=parseInt(new Date()/1000)
     let md=date_format(time);
     if(event.key=='autoday'){
-      if((md>='1218' && md<='1230')){
+      if((md<='0110' || md>='1227')){
+        chris[0].url='http://shuzi132-img.vking.wang/year2019.jpg'
+        chris[1].content='新年快乐'
+        chris[2].content='新年快乐'
+        share.chris=chris;
+        key='chris';
+      }else if((md>='1218' && md<='1230')){
         share.chris=chris;
         key='chris';
       }else{
