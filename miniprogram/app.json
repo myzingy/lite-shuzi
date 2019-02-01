@@ -20,7 +20,7 @@
     },
     "plugins": {
         "poster": {
-            "version": "1.2.0",
+            "version": "1.2.2",
             "provider": "wxbf07f0f22c6c200d"
         },
         "calendar": {
