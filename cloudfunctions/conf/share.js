@@ -167,7 +167,7 @@ module.exports={
     let time=parseInt(new Date()/1000)
     let md=date_format(time);
     if(event.key=='autoday'){
-      if((md<='0220' || md>='0201')){
+      if((md<='0220' && md>='0201')){
         chris[0].url='http://shuzi132-img.vking.wang/year20192.jpg'
         chris[1].content='新年快乐'
         chris[2].content='新年快乐'

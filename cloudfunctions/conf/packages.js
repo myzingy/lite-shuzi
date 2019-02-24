@@ -40,6 +40,31 @@ const packages=[
     ]
   },
   {
+    type:'20内加减9',
+    title:'20内9的加减',
+    items:[
+      {key: '+', label: '加法', checked: true,nums:[],roal:{
+        pa:0,
+        pb:20,
+        static:{
+          pa:9,
+          pb:9,
+        },
+        min:9,
+        max:20,
+      }},
+      {key: '-', label: '减法', checked: true,nums:[],roal:{
+        pa:0,
+        pb:20,
+        static:{
+          pb:9,
+        },
+        min:0,
+        max:11,
+      }},
+    ]
+  },
+  {
     type:'20以内加减法',
     title:'20以内加减法',
     items:[
@@ -64,22 +89,39 @@ module.exports={
     let nums=[]
     for(let i=roal.pa;i<=roal.pb;i++){
       for(let j=roal.pa;j<=roal.pb;j++){
-        if(j-i>=roal.min && j-i<=roal.max && fukey=='-'){
-          if(roal.hasTuiwei){
-            if(j>10 && j-10<i && i<10){
-              nums.push(j+'-'+i);
+        if(roal.static){
+          if(fukey=='+'){
+            if(j+roal.static.pb<roal.max){
+              nums.push(j+'+'+roal.static.pb);
+              nums.push(roal.static.pb+'+'+j);
             }
           }else{
-            nums.push(j+'-'+i);
+            if(j-roal.static.pb>=roal.min){
+              nums.push(j+'-'+roal.static.pb);
+            }
           }
+        }else{
+          if(j-i>=roal.min && j-i<=roal.max && fukey=='-'){
+            if(roal.hasTuiwei){
+              if(j>10 && j-10<i && i<10){
+                nums.push(j+'-'+i);
+              }
+            }else{
+              nums.push(j+'-'+i);
+            }
 
+          }
+          if(i+j<=roal.max && i+j>=roal.min && fukey=='+'){
+            nums.push(i+'+'+j);
+          }
         }
-        if(i+j<=roal.max && i+j>=roal.min && fukey=='+'){
-          nums.push(i+'+'+j);
-        }
+
       }
     }
-    return nums;
+    let uninums=nums.filter(function (element, index, self) {
+      return self.indexOf(element) === index;
+    })
+    return uninums;
   },
   init(){
     let mp={};
