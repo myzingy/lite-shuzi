@@ -38,52 +38,54 @@ const packages=[
         max:9,
       }},
     ]
-  },
-  {
-    type:'20内加减9',
-    title:'20内9的加减',
+  }
+];
+for(let i=0;i<5;i++){
+  let num=9-i;
+  let px={
+    type:'20内加减'+num,
+    title:'20内'+num+'的加减',
     items:[
       {key: '+', label: '加法', checked: true,nums:[],roal:{
         pa:0,
         pb:20,
         static:{
-          pa:9,
-          pb:9,
+          pb:num,
         },
-        min:9,
+        min:num,
         max:20,
       }},
       {key: '-', label: '减法', checked: true,nums:[],roal:{
         pa:0,
         pb:20,
         static:{
-          pb:9,
+          pb:num,
         },
         min:0,
         max:11,
       }},
     ]
-  },
-  {
-    type:'20以内加减法',
-    title:'20以内加减法',
-    items:[
-      {key: '+', label: '加法', checked: true,nums:[],roal:{
-        pa:1,
-        pb:20,
-        min:11,
-        max:20,
-      }},
-      {key: '-', label: '减法', checked: true,nums:[],roal:{
-        pa:1,
-        pb:20,
-        min:11,
-        max:20,
-      }},
-    ]
-  },
-];
-
+  }
+  packages.push(px);
+}
+packages.push({
+  type:'20以内加减法',
+  title:'20以内加减法',
+  items:[
+    {key: '+', label: '加法', checked: true,nums:[],roal:{
+      pa:1,
+      pb:20,
+      min:11,
+      max:20,
+    }},
+    {key: '-', label: '减法', checked: true,nums:[],roal:{
+      pa:1,
+      pb:20,
+      min:11,
+      max:20,
+    }},
+  ]
+});
 module.exports={
   greateNums(type=10,fukey='+',roal){
     let nums=[]
