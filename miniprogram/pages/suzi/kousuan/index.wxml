@@ -3,9 +3,10 @@
      home="/pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
-<view class="flex-lr selected-info" wx:if="{{dataLength>0}}">
+<view class="flex-lr selected-info" wx:if="{{dataLength>0}}" bindtap="triggerMask">
     <view>已选{{dataLength}}题</view>
-    <view class="flex-rr" bindtap="triggerMask">查看<view class="iconfont icon-gt"></view></view>
+    <view class="flex-rr" wx:if="{{hideMask}}">查看<view class="iconfont icon-gt"></view></view>
+    <view class="flex-rr" wx:else="">收起<view class="iconfont icon-gt rotate-90"></view></view>
 </view>
 <view class="page flex-ll" style="margin-top: 100rpx;flex-wrap:wrap;width: 100%; margin-bottom: 250rpx;">
     <view class="package {{type==pack.type?'active':''}}"

@@ -59,15 +59,17 @@
 .mask-nums{
   position: fixed;
   width: 100%;
-  bottom: 0;
-  background-color: #ffffff;
+  top: 220rpx;
+  background-color: #0099FF;
   max-height: 1000rpx;
   overflow-y: auto;
+  padding-bottom: 20rpx;
+  color:#fefefe;
 }
 .nums-item{
   width: 100rpx;
   margin: 10rpx;
-  border-bottom: 1rpx solid #007aff;
+  border-bottom: 1rpx solid #ccc;
   text-align: center;
 }
 .selected-info{
@@ -77,9 +79,9 @@
   right:0;
   background-color: #0099FF;
   z-index: 9;
-  height: 80rpx;
-  line-height: 80rpx;
-  padding: 0 5%;
+  height: 40rpx;
+  line-height: 40rpx;
+  padding: 50rpx 5% 10rpx;
   color:#fefefe;
 }
 .start-but{
@@ -87,4 +89,7 @@
   bottom: 130rpx;
   left: 0;
   right: 0;
+}
+.rotate-90{
+  transform:rotate(-90deg);
 }
