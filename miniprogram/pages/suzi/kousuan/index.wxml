@@ -15,7 +15,7 @@
             {{pack.title}}
         </view>
         <checkbox-group bindchange="checkboxChange" catchtap="catchtap">
-            <label class="checkbox" wx:for="{{pack.items}}" catchtap="catchtap">
+            <label class="checkbox" wx:for="{{pack.items}}" wx:key="pack.items.key" catchtap="catchtap">
                 <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
                 <text class="checkbox-label">{{item.label}}</text>
             </label>
