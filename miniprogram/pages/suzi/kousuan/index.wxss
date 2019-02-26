@@ -70,3 +70,21 @@
   border-bottom: 1rpx solid #007aff;
   text-align: center;
 }
+.selected-info{
+  position: fixed;
+  top:120rpx;
+  left:0;
+  right:0;
+  background-color: #0099FF;
+  z-index: 9;
+  height: 80rpx;
+  line-height: 80rpx;
+  padding: 0 5%;
+  color:#fefefe;
+}
+.start-but{
+  position: fixed;
+  bottom: 130rpx;
+  left: 0;
+  right: 0;
+}

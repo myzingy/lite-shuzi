@@ -3,11 +3,11 @@
      home="/pages/suzi/kousuan/index"
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
-<view class="page flex-lr" wx:if="{{dataLength>0}}" style="margin-top: 20rpx;">
+<view class="flex-lr selected-info" wx:if="{{dataLength>0}}">
     <view>已选{{dataLength}}题</view>
     <view class="flex-rr" bindtap="triggerMask">查看<view class="iconfont icon-gt"></view></view>
 </view>
-<view class="page flex-ll" style="margin-top: 20rpx;flex-wrap:wrap;width: 100%;">
+<view class="page flex-ll" style="margin-top: 100rpx;flex-wrap:wrap;width: 100%; margin-bottom: 250rpx;">
     <view class="package {{type==pack.type?'active':''}}"
           bindtap="activePack" data-type="{{pack.type}}" data-index="{{index}}"
           wx:for="{{packages}}" wx:key="packages.key" wx:for-item="pack">
@@ -22,40 +22,9 @@
         </checkbox-group>
         <view class="mask"></view>
     </view>
-    <!--
-    <view class="package">
-        <view class="tips">
-            10以内加减速算卡，适用小学一年级提升计算基础能力，请坚持每天训练
-        </view>
-        <checkbox-group bindchange="checkboxChange">
-            <label class="checkbox" wx:for="{{items}}">
-                <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
-                <text class="checkbox-label">{{item.label}}</text>
-            </label>
-        </checkbox-group>
-    </view>
-    <view class="package">
-        <view class="tips">
-            10以内加减速算卡，适用小学一年级提升计算基础能力，请坚持每天训练
-        </view>
-        <checkbox-group bindchange="checkboxChange">
-            <label class="checkbox" wx:for="{{items}}">
-                <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
-                <text class="checkbox-label">{{item.label}}</text>
-            </label>
-        </checkbox-group>
-    </view>
-    -->
 
 </view>
-<view class="page" style="margin-bottom: 200rpx;">
-    <!--
-    <view class="tips-ai">
-        <switch bindchange="switchAi"/>
-        开启 “AI判断”，识别语音正确将跳到下一题；
-        <view style="color: #ff007a;text-decoration : underline;">虽然在努力识别，但目前识别率低；还是需要家长进行对错判断</view>
-    </view>
-    -->
+<view class="page start-but">
     <button type="primary" bindtap="start">
         开 始
     </button>
