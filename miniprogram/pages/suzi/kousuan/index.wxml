@@ -11,12 +11,12 @@
 <view class="page flex-ll" style="margin-top: 100rpx;flex-wrap:wrap;width: 100%; margin-bottom: 250rpx;">
     <view class="package {{type==pack.type?'active':''}}"
           bindtap="activePack" data-type="{{pack.type}}" data-index="{{index}}"
-          wx:for="{{packages}}" wx:key="packages.key" wx:for-item="pack">
+          wx:for="{{packages}}" wx:key="packageskey" wx:for-item="pack">
         <view class="tips">
             {{pack.title}}
         </view>
         <checkbox-group bindchange="checkboxChange" catchtap="catchtap">
-            <label class="checkbox" wx:for="{{pack.items}}" wx:key="pack.items.key" catchtap="catchtap">
+            <label class="checkbox" wx:for="{{pack.items}}" wx:key="packitemskey" catchtap="catchtap">
                 <checkbox value="{{item.key}}" checked="{{item.checked}}"/>
                 <text class="checkbox-label">{{item.label}}</text>
             </label>
@@ -33,6 +33,6 @@
 <navbar></navbar>
 <view class="mask" bindtap="triggerMask" hidden="{{hideMask}}">
     <view class="page flex-ll mask-nums" style="flex-wrap:wrap;">
-        <view wx:for="{{nums}}" wx:key="nums.key" class="nums-item">{{item}}</view>
+        <view wx:for="{{nums}}" wx:key="numskey" class="nums-item">{{item}}</view>
     </view>
 </view>

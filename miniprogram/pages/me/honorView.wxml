@@ -12,7 +12,7 @@
         <view wx:if="{{honor.info}}" class="info">{{honor.info}}</view>
         <view class="flex-ll" style="flex-wrap:wrap">
             <formids bindclick="viewImage" data-index="{{index}}"
-                     wx:for="{{honor.items}}" wx:key="honor.key"
+                     wx:for="{{honor.items}}" wx:key="honorkey"
                      class="item"
                      style="background-image:url({{item}}-honorItems);margin-right: {{index%2==0?'4%':0}};">
                 <view class="mask flex-vc" wx:if="{{honorNum[honor.icon]-1<index}}">
