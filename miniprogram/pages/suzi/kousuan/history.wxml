@@ -4,7 +4,7 @@
      backgroundColor="#0099FF"
      color="#fefefe">口算卡 132</nav>
 <view class="page" wx:if="{{rows.length>0}}" style="margin-bottom: 200rpx;">
-    <view class="pack" wx:for="{{rows}}" wx:key="rows.key">
+    <view class="pack" wx:for="{{rows}}" wx:key="rowskey">
         <view class="header flex-vc">
             <viev>{{item.dateStr}}</viev>
         </view>
