@@ -25,6 +25,8 @@ export default {
         icon='long';
       }else{
         let ic=honor[icon_index];
+        if(typeof ic=='undefined') break
+        console.log('ic',ic)
         data[ic.icon]+=1;
         icon=ic.icon;
         if(data[ic.icon]+1>ic.count){

@@ -29,8 +29,8 @@ Page({
     onLoad: async function (options) {
       this.type='10';
       try{
-        this.type=await app.cache('type');
-        this.type_index=await app.cache('type_index');
+        this.type=await app.cache('type')||10;
+        this.type_index=await app.cache('type_index')||10;
         this.setData({
           type:this.type,
         })
@@ -103,7 +103,7 @@ Page({
     },
   greateNums(fua=true,fus=true){
     let pack=this.packages[this.type_index];
-    console.log('pack',this.type,this.type_index,pack)
+    console.log('pack',this.packages,this.type,this.type_index,pack)
     let nums=[]
     if(fua){
       nums=nums.concat(pack.items[0].nums);
