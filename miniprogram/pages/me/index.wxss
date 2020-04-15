@@ -8,7 +8,7 @@ page {
 }
 
 .userinfo, .uploader, .tunnel {
-  margin-top: 40rpx;
+  margin-top: 20rpx;
   height: 140rpx;
   width: 100%;
   background: #fff;
@@ -50,6 +50,8 @@ page {
   padding: 20rpx 20rpx 20rpx 0;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
   position: relative;
+  margin-top: 0rpx;
+  border-top:none;
 }
 .uploader-view{
   width: 90%;
@@ -72,17 +74,21 @@ page {
 .enterClass{
   position: absolute;
   right: 40rpx;
-  top:300rpx;
+  top:280rpx;
   border: 1rpx solid #007aff;
   background-color: #007aff;
   color:#fefefe;
   border-radius: 50%;
   box-shadow: 0rpx 0rpx 50rpx  10rpx #007aff;
+  box-sizing: border-box;
+  width: 140rpx;
+  height: 140rpx;
+  overflow: hidden;
 }
 .enterClass .text{
   width: 80rpx;
   height: 80rpx;
-  margin: 30rpx;
+  margin: 25rpx 30rpx;
   text-align: center;
 }
 .uploader-honor{
@@ -92,3 +98,6 @@ page {
   background-position: right;
 }
 .container{margin-bottom: 200rpx;}
+.tulue-new{
+  color: #fe3333;
+}
