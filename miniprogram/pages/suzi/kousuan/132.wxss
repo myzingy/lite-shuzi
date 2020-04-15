@@ -44,6 +44,11 @@ padding-right:40rpx;
 .mask-start .start view{
   padding-left: 30rpx;
 }
+.mask-start-info{
+    font-size: 34rpx;
+    color: #ffffff;
+    margin-top: 20rpx;
+}
 .back{
   position: absolute;
   right: 10rpx;

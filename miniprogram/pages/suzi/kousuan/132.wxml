@@ -16,6 +16,7 @@
             <icon type="info" size="60" color="red" />
             <view>{{last>1?'继 续':'开 始'}}</view>
         </view>
+        <view class="mask-start-info">家长核对后，点击对勾或错误</view>
     </view>
 </view>
 <view class="num-gameover{{vertical}}" wx:if="{{gameover}}">
